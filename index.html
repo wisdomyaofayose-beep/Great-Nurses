@@ -784,7 +784,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.85);
             display: none;
             justify-content: center;
             align-items: center;
@@ -800,14 +800,27 @@
             border-radius: 20px;
             padding: 40px 50px;
             text-align: center;
-            max-width: 400px;
+            max-width: 420px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         .copy-protection-overlay .popup i {
             font-size: 3rem;
-            color: #dc2626;
             margin-bottom: 16px;
+        }
+
+        .copy-protection-overlay .popup i.warning-icon {
+            color: #f59e0b;
+        }
+
+        .copy-protection-overlay .popup i.danger-icon {
+            color: #dc2626;
         }
 
         .copy-protection-overlay .popup h3 {
@@ -818,6 +831,7 @@
         .copy-protection-overlay .popup p {
             color: #64748b;
             font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         .copy-protection-overlay .popup button {
@@ -830,9 +844,108 @@
             font-weight: 600;
             cursor: pointer;
             font-size: 0.95rem;
+            transition: 0.2s;
         }
 
         .copy-protection-overlay .popup button:hover {
+            background: #0b1e33;
+        }
+
+        /* ========================================
+                   SCORE RESULT OVERLAY
+                ======================================== */
+        .score-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .score-overlay.show {
+            display: flex;
+        }
+
+        .score-overlay .popup {
+            background: #fff;
+            border-radius: 24px;
+            padding: 50px 60px;
+            text-align: center;
+            max-width: 480px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: popIn 0.4s ease;
+        }
+
+        .score-overlay .popup .score-icon {
+            font-size: 4rem;
+            margin-bottom: 12px;
+        }
+
+        .score-overlay .popup .score-icon.passed {
+            color: #16a34a;
+        }
+
+        .score-overlay .popup .score-icon.failed {
+            color: #dc2626;
+        }
+
+        .score-overlay .popup h2 {
+            color: #0b1e33;
+            font-size: 1.8rem;
+            margin-bottom: 4px;
+        }
+
+        .score-overlay .popup .score-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #0b1e33;
+            margin: 8px 0;
+        }
+
+        .score-overlay .popup .score-details {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .score-overlay .popup .score-status {
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 8px;
+        }
+
+        .score-overlay .popup .score-status.passed {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .score-overlay .popup .score-status.failed {
+            background: #fef2f2;
+            color: #991b1b;
+        }
+
+        .score-overlay .popup button {
+            margin-top: 20px;
+            padding: 12px 40px;
+            background: #1e3a5f;
+            color: #fff;
+            border: none;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .score-overlay .popup button:hover {
             background: #0b1e33;
         }
     </style>
@@ -844,10 +957,51 @@
     ============================================ -->
     <div class="copy-protection-overlay" id="copyOverlay">
         <div class="popup">
-            <i class="fas fa-ban"></i>
-            <h3>⚠️ Copying Disabled</h3>
-            <p>Copying questions is not allowed during the exam. Please answer the questions honestly.</p>
+            <i class="fas fa-exclamation-triangle warning-icon"></i>
+            <h3>⚠️ Warning!</h3>
+            <p id="copyWarningMessage">Copying is not allowed during the exam. Please answer honestly.</p>
             <button onclick="closeCopyOverlay()">I Understand</button>
+        </div>
+    </div>
+
+    <!-- ============================================
+    TAB SWITCH WARNING OVERLAY
+    ============================================ -->
+    <div class="copy-protection-overlay" id="tabWarningOverlay">
+        <div class="popup">
+            <i class="fas fa-exclamation-triangle warning-icon"></i>
+            <h3>🚫 Tab Switching Detected!</h3>
+            <p>You switched to another tab or application. This is a <strong>warning</strong>. If you switch tabs again, your exam will be automatically submitted.</p>
+            <button onclick="closeTabWarning()">Return to Exam</button>
+        </div>
+    </div>
+
+    <!-- ============================================
+    FINAL WARNING OVERLAY
+    ============================================ -->
+    <div class="copy-protection-overlay" id="finalWarningOverlay">
+        <div class="popup">
+            <i class="fas fa-exclamation-triangle danger-icon"></i>
+            <h3>⛔ Final Warning!</h3>
+            <p>You have switched tabs multiple times. Your exam will be <strong>automatically submitted</strong> if you switch tabs again.</p>
+            <button onclick="closeFinalWarning()">I Understand - Return to Exam</button>
+        </div>
+    </div>
+
+    <!-- ============================================
+    SCORE RESULT OVERLAY
+    ============================================ -->
+    <div class="score-overlay" id="scoreOverlay">
+        <div class="popup">
+            <div class="score-icon" id="scoreIcon"><i class="fas fa-check-circle"></i></div>
+            <h2>📊 Exam Results</h2>
+            <div class="score-number" id="scoreNumber">0%</div>
+            <div class="score-details" id="scoreDetails">
+                Answered: 0/0<br />
+                Correct: 0/0
+            </div>
+            <div class="score-status" id="scoreStatus">PASSED</div>
+            <button onclick="closeScoreAndLogout()">Continue</button>
         </div>
     </div>
 
@@ -1103,17 +1257,54 @@
         // ==========================================
         // COPY PROTECTION
         // ==========================================
+        let warningCount = 0;
+        let tabSwitchCount = 0;
+        let isExamActive = false;
+
+        function showCopyWarning(message) {
+            document.getElementById('copyWarningMessage').textContent = message || 'Copying is not allowed during the exam. Please answer honestly.';
+            document.getElementById('copyOverlay').classList.add('show');
+        }
+
+        function closeCopyOverlay() {
+            document.getElementById('copyOverlay').classList.remove('show');
+        }
+
+        function showTabWarning() {
+            document.getElementById('tabWarningOverlay').classList.add('show');
+        }
+
+        function closeTabWarning() {
+            document.getElementById('tabWarningOverlay').classList.remove('show');
+        }
+
+        function showFinalWarning() {
+            document.getElementById('finalWarningOverlay').classList.add('show');
+        }
+
+        function closeFinalWarning() {
+            document.getElementById('finalWarningOverlay').classList.remove('show');
+        }
+
         // Disable right-click on exam
         document.getElementById('examContainer').addEventListener('contextmenu', function(e) {
             e.preventDefault();
-            document.getElementById('copyOverlay').classList.add('show');
+            if (isExamActive) {
+                warningCount++;
+                if (warningCount >= 3) {
+                    showCopyWarning('⚠️ Multiple violations detected. Your exam will be submitted.');
+                    setTimeout(submitExam, 3000);
+                } else {
+                    showCopyWarning('⚠️ Right-click is disabled during the exam. Please do not attempt to copy.');
+                }
+            }
         });
 
-        // Disable keyboard shortcuts (Ctrl+C, Ctrl+V, Ctrl+U, etc.)
+        // Disable keyboard shortcuts
         document.addEventListener('keydown', function(e) {
-            // Check if exam is visible
             const exam = document.getElementById('examContainer');
             if (exam.style.display !== 'block') return;
+            if (!isExamActive) return;
 
             // Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+P, Ctrl+S, F12
             if (
@@ -1121,7 +1312,13 @@
                 (e.key === 'F12')
             ) {
                 e.preventDefault();
-                document.getElementById('copyOverlay').classList.add('show');
+                warningCount++;
+                if (warningCount >= 3) {
+                    showCopyWarning('⚠️ Multiple violations detected. Your exam will be submitted.');
+                    setTimeout(submitExam, 3000);
+                } else {
+                    showCopyWarning('⚠️ Keyboard shortcuts are disabled during the exam.');
+                }
                 return false;
             }
         });
@@ -1130,13 +1327,55 @@
         document.addEventListener('keyup', function(e) {
             if (e.key === 'PrintScreen') {
                 navigator.clipboard.writeText('');
-                document.getElementById('copyOverlay').classList.add('show');
+                warningCount++;
+                if (warningCount >= 3) {
+                    showCopyWarning('⚠️ Multiple violations detected. Your exam will be submitted.');
+                    setTimeout(submitExam, 3000);
+                } else {
+                    showCopyWarning('⚠️ Screenshots are not allowed during the exam.');
+                }
             }
         });
 
-        function closeCopyOverlay() {
-            document.getElementById('copyOverlay').classList.remove('show');
-        }
+        // ==========================================
+        // TAB SWITCH DETECTION
+        // ==========================================
+        document.addEventListener('visibilitychange', function() {
+            const exam = document.getElementById('examContainer');
+            if (exam.style.display !== 'block') return;
+            if (!isExamActive) return;
+            if (examState.submitted) return;
+
+            if (document.hidden) {
+                // User switched tabs
+                tabSwitchCount++;
+
+                if (tabSwitchCount >= 3) {
+                    showFinalWarning();
+                    // Auto-submit after 5 seconds if they don't return
+                    setTimeout(function() {
+                        if (document.hidden) {
+                            submitExam();
+                        }
+                    }, 5000);
+                } else if (tabSwitchCount >= 2) {
+                    showTabWarning();
+                    // Auto-submit after 10 seconds if they don't return
+                    setTimeout(function() {
+                        if (document.hidden) {
+                            submitExam();
+                        }
+                    }, 10000);
+                } else {
+                    showCopyWarning('⚠️ You switched tabs! This is a warning. Next time your exam will be submitted.');
+                }
+            } else {
+                // User returned
+                closeTabWarning();
+                closeFinalWarning();
+                closeCopyOverlay();
+            }
+        });
 
         // ==========================================
         // DATA LAYER - Using LocalStorage
@@ -1247,11 +1486,8 @@
             if (data) {
                 try {
                     return JSON.parse(data);
-                } catch (e) {
-                    // If corrupted, reset
-                }
+                } catch (e) {}
             }
-            // Initialize with defaults
             const defaults = getDefaultQuestions();
             localStorage.setItem('greatNursesQuestions', JSON.stringify(defaults));
             return defaults;
@@ -1262,6 +1498,17 @@
         }
 
         let questionData = loadQuestions();
+
+        // Convert neurological to medical if exists
+        if (questionData.neurological && !questionData.medical) {
+            questionData.medical = questionData.neurological;
+            delete questionData.neurological;
+            saveQuestions(questionData);
+        } else if (questionData.neurological && questionData.medical) {
+            questionData.medical = [...questionData.medical, ...questionData.neurological];
+            delete questionData.neurological;
+            saveQuestions(questionData);
+        }
 
         // ==========================================
         // LOGIN SYSTEM
@@ -1276,7 +1523,6 @@
             const password = document.getElementById('password').value.trim();
             const errorEl = document.getElementById('loginError');
 
-            // Check if admin
             if (password === ADMIN_PASSWORD) {
                 errorEl.classList.remove('show');
                 document.getElementById('landingPage').style.display = 'none';
@@ -1286,22 +1532,22 @@
                 return;
             }
 
-            // Check if student (any username with easymoves)
             if (password === STUDENT_PASSWORD && username.length > 0) {
                 errorEl.classList.remove('show');
                 document.getElementById('landingPage').style.display = 'none';
                 document.getElementById('studentName').textContent = username;
                 document.getElementById('examContainer').style.display = 'block';
+                isExamActive = true;
+                warningCount = 0;
+                tabSwitchCount = 0;
                 startExam('medical');
                 return;
             }
 
-            // Invalid
             errorEl.classList.add('show');
             document.getElementById('password').value = '';
         }
 
-        // Enter key support
         document.getElementById('password').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') document.getElementById('loginForm').dispatchEvent(new Event('submit'));
         });
@@ -1319,7 +1565,13 @@
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
             document.getElementById('loginError').classList.remove('show');
+            isExamActive = false;
             stopTimer();
+        }
+
+        function closeScoreAndLogout() {
+            document.getElementById('scoreOverlay').classList.remove('show');
+            logout();
         }
 
         // ==========================================
@@ -1402,7 +1654,6 @@
             renderAdminQuestions(adminCurrentCategory);
             updateStats();
 
-            // Clear form
             document.getElementById('newQuestionText').value = '';
             document.getElementById('newOptA').value = '';
             document.getElementById('newOptB').value = '';
@@ -1438,7 +1689,6 @@
         function deleteQuestion(category, index) {
             if (!confirm(`Delete question #${index + 1}?`)) return;
             questionData[category].splice(index, 1);
-            // Re-index
             questionData[category].forEach((q, i) => q.id = i + 1);
             saveQuestions(questionData);
             renderAdminQuestions(adminCurrentCategory);
@@ -1499,7 +1749,8 @@
             flagged: {},
             timerInterval: null,
             seconds: 2690,
-            submitted: false
+            submitted: false,
+            resultsShown: false
         };
 
         function startExam(category) {
@@ -1509,6 +1760,10 @@
             examState.flagged = {};
             examState.seconds = 2690;
             examState.submitted = false;
+            examState.resultsShown = false;
+            isExamActive = true;
+            warningCount = 0;
+            tabSwitchCount = 0;
 
             document.getElementById('categorySelector').value = category;
             renderExamQuestion();
@@ -1516,6 +1771,7 @@
         }
 
         function switchCategory() {
+            if (examState.submitted) return;
             const cat = document.getElementById('categorySelector').value;
             examState.category = cat;
             examState.currentIndex = 0;
@@ -1560,7 +1816,6 @@
             document.getElementById('currentQ').textContent = examState.currentIndex + 1;
             document.getElementById('qCounter').textContent = examState.currentIndex + 1;
 
-            // Flag status
             const isFlagged = examState.flagged[examState.currentIndex] || false;
             const flagBtn = document.getElementById('flagBtn');
             const badge = document.getElementById('flaggedBadge');
@@ -1574,16 +1829,13 @@
                 badge.classList.remove('active');
             }
 
-            // Nav buttons
             document.getElementById('prevBtn').disabled = examState.currentIndex === 0;
             document.getElementById('nextBtn').disabled = examState.currentIndex === qs.length - 1;
 
-            // Category label
             document.getElementById('examCategoryLabel').innerHTML =
                 `<i class="fas ${CATEGORY_ICONS[examState.category]}"></i> ${CATEGORY_LABELS[examState.category]}`;
         }
 
-        // Option click
         document.getElementById('optionsContainer').addEventListener('click', function(e) {
             const optionDiv = e.target.closest('.option-item');
             if (!optionDiv) return;
@@ -1595,20 +1847,17 @@
             const index = parseInt(optionDiv.dataset.index);
             if (isNaN(index)) return;
 
-            // Deselect all
             document.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
             optionDiv.classList.add('selected');
             examState.answers[examState.currentIndex] = index;
         });
 
-        // Flag button
         document.getElementById('flagBtn').addEventListener('click', function() {
             if (examState.submitted) return;
             examState.flagged[examState.currentIndex] = !examState.flagged[examState.currentIndex];
             renderExamQuestion();
         });
 
-        // Navigation
         document.getElementById('prevBtn').addEventListener('click', function() {
             if (examState.currentIndex > 0) {
                 examState.currentIndex--;
@@ -1624,15 +1873,18 @@
             }
         });
 
-        // Timer
         function startTimer() {
             if (examState.timerInterval) clearInterval(examState.timerInterval);
             examState.timerInterval = setInterval(function() {
                 if (examState.seconds <= 0) {
                     clearInterval(examState.timerInterval);
                     document.getElementById('timerDisplay').textContent = '00:00';
-                    alert('Time is up! Your exam will be submitted.');
-                    submitExam();
+                    // Auto-submit when time runs out
+                    if (!examState.submitted) {
+                        examState.submitted = true;
+                        isExamActive = false;
+                        showResults();
+                    }
                     return;
                 }
                 examState.seconds--;
@@ -1653,7 +1905,17 @@
         function submitExam() {
             if (examState.submitted) return;
             examState.submitted = true;
+            isExamActive = false;
             stopTimer();
+            closeCopyOverlay();
+            closeTabWarning();
+            closeFinalWarning();
+            showResults();
+        }
+
+        function showResults() {
+            if (examState.resultsShown) return;
+            examState.resultsShown = true;
 
             const qs = getCategoryQuestions();
             let correct = 0;
@@ -1672,33 +1934,34 @@
             const score = Math.round((correct / total) * 100);
             const passed = score >= 60;
 
-            alert(`📊 Exam Results\n\nCategory: ${CATEGORY_LABELS[examState.category]}\nAnswered: ${answered}/${total}\nCorrect: ${correct}/${total}\nScore: ${score}%\nStatus: ${passed ? '✅ PASSED' : '❌ FAILED'}\n\nThank you for taking the exam!`);
+            // Show results overlay
+            const overlay = document.getElementById('scoreOverlay');
+            const icon = document.getElementById('scoreIcon');
+            const number = document.getElementById('scoreNumber');
+            const details = document.getElementById('scoreDetails');
+            const status = document.getElementById('scoreStatus');
 
-            // Reset or allow review
-            if (confirm('Would you like to review your answers?')) {
-                examState.submitted = false;
-                renderExamQuestion();
+            if (passed) {
+                icon.innerHTML = '<i class="fas fa-check-circle"></i>';
+                icon.className = 'score-icon passed';
+                status.className = 'score-status passed';
+                status.textContent = '✅ PASSED';
             } else {
-                // Go back to landing
-                logout();
+                icon.innerHTML = '<i class="fas fa-times-circle"></i>';
+                icon.className = 'score-icon failed';
+                status.className = 'score-status failed';
+                status.textContent = '❌ FAILED';
             }
+
+            number.textContent = `${score}%`;
+            details.innerHTML = `Answered: ${answered}/${total}<br />Correct: ${correct}/${total}`;
+
+            overlay.classList.add('show');
         }
 
         // ==========================================
         // INIT
         // ==========================================
-        // Convert any existing "neurological" data to "medical"
-        if (questionData.neurological && !questionData.medical) {
-            questionData.medical = questionData.neurological;
-            delete questionData.neurological;
-            saveQuestions(questionData);
-        } else if (questionData.neurological && questionData.medical) {
-            // Merge if both exist
-            questionData.medical = [...questionData.medical, ...questionData.neurological];
-            delete questionData.neurological;
-            saveQuestions(questionData);
-        }
-
         updateStats();
     </script>
 
