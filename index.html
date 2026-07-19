@@ -310,40 +310,282 @@
 <script>
     // --- Mock Data (for demonstration) ---
     const questions = [
-        {
-            id: 1,
-            text: "An appropriate nursing intervention for Altered Cerebral Tissue Perfusion related to cerebral edema is?",
-            options: [
-                "Avoiding positioning the patient with neck and hip flexion",
-                "Routine suctioning to prevent accumulation of respiratory secretions",
-                "Maintaining hyperventilation to PaCO2 of 15-20 mmHg",
-                "Clustering nursing activities to provide uninterrupted rest"
-            ],
-            correct: 0 // A is correct (in real scenario you'd check this)
-        },
-        {
-            id: 2,
-            text: "A client with increased intracranial pressure (ICP) should be placed in which position to promote venous drainage?",
-            options: [
-                "Supine with legs elevated",
-                "Trendelenburg position",
-                "Head of bed elevated 30 degrees",
-                "Left lateral recumbent"
-            ],
-            correct: 2
-        },
-        {
-            id: 3,
-            text: "Which of the following is an early sign of increased intracranial pressure?",
-            options: [
-                "Widening pulse pressure",
-                "Decreased level of consciousness",
-                "Posturing",
-                "Fixed dilated pupils"
-            ],
-            correct: 1
-        }
-    ];
+    {
+        id: 1,
+        text: "An appropriate nursing intervention for Altered Cerebral Tissue Perfusion related to cerebral edema is?",
+        options: [
+            "Avoiding positioning the patient with neck and hip flexion",
+            "Routine suctioning to prevent accumulation of respiratory secretions",
+            "Maintaining hyperventilation to PaCO2 of 15-20 mmHg",
+            "Clustering nursing activities to provide uninterrupted rest"
+        ],
+        correct: 0
+    },
+    {
+        id: 2,
+        text: "A client with increased intracranial pressure (ICP) should be placed in which position to promote venous drainage?",
+        options: [
+            "Supine with legs elevated",
+            "Trendelenburg position",
+            "Head of bed elevated 30 degrees",
+            "Left lateral recumbent"
+        ],
+        correct: 2
+    },
+    {
+        id: 3,
+        text: "Which of the following is an early sign of increased intracranial pressure?",
+        options: [
+            "Widening pulse pressure",
+            "Decreased level of consciousness",
+            "Posturing",
+            "Fixed dilated pupils"
+        ],
+        correct: 1
+    },
+    {
+        id: 4,
+        text: "What is the normal range for intracranial pressure (ICP)?",
+        options: [
+            "0-5 mmHg",
+            "5-15 mmHg",
+            "15-30 mmHg",
+            "30-45 mmHg"
+        ],
+        correct: 1
+    },
+    {
+        id: 5,
+        text: "Which nursing intervention is most important for a patient with a head injury?",
+        options: [
+            "Monitor intake and output",
+            "Assess neurological status every hour",
+            "Encourage ambulation",
+            "Provide a high-protein diet"
+        ],
+        correct: 1
+    },
+    {
+        id: 6,
+        text: "The nurse is caring for a patient with a subdural hematoma. Which finding indicates increased ICP?",
+        options: [
+            "Decreased heart rate",
+            "Increased respiratory rate",
+            "Decreased blood pressure",
+            "Increased pulse rate"
+        ],
+        correct: 0
+    },
+    {
+        id: 7,
+        text: "A patient is exhibiting decorticate posturing. What does this indicate?",
+        options: [
+            "Damage to the brainstem",
+            "Damage to the cerebral hemispheres",
+            "Damage to the spinal cord",
+            "Damage to the cerebellum"
+        ],
+        correct: 1
+    },
+    {
+        id: 8,
+        text: "Which medication is commonly used to reduce cerebral edema?",
+        options: [
+            "Heparin",
+            "Mannitol",
+            "Dopamine",
+            "Digoxin"
+        ],
+        correct: 1
+    },
+    {
+        id: 9,
+        text: "The nurse should avoid which action when caring for a patient with increased ICP?",
+        options: [
+            "Elevating the head of the bed",
+            "Suctioning frequently",
+            "Minimizing environmental stimuli",
+            "Administering sedatives as ordered"
+        ],
+        correct: 1
+    },
+    {
+        id: 10,
+        text: "What is the priority nursing diagnosis for a patient with a brain tumor?",
+        options: [
+            "Risk for injury",
+            "Impaired physical mobility",
+            "Altered cerebral tissue perfusion",
+            "Deficient knowledge"
+        ],
+        correct: 2
+    },
+    {
+        id: 11,
+        text: "A patient with a stroke has difficulty swallowing. What should the nurse do first?",
+        options: [
+            "Offer thickened liquids",
+            "Consult with a speech therapist",
+            "Place the patient in a supine position",
+            "Administer IV fluids"
+        ],
+        correct: 1
+    },
+    {
+        id: 12,
+        text: "Which assessment finding is most concerning in a patient with a head injury?",
+        options: [
+            "Glasgow Coma Scale score of 15",
+            "Unequal pupil size",
+            "Headache rated 3/10",
+            "Vomiting once"
+        ],
+        correct: 1
+    },
+    {
+        id: 13,
+        text: "The nurse is assessing a patient with a spinal cord injury. Which finding indicates autonomic dysreflexia?",
+        options: [
+            "Hypotension and bradycardia",
+            "Hypertension and bradycardia",
+            "Hypotension and tachycardia",
+            "Hypertension and tachycardia"
+        ],
+        correct: 1
+    },
+    {
+        id: 14,
+        text: "What is the immediate nursing action for a patient having a seizure?",
+        options: [
+            "Restrain the patient",
+            "Insert an oral airway",
+            "Protect the patient from injury",
+            "Administer oxygen"
+        ],
+        correct: 2
+    },
+    {
+        id: 15,
+        text: "Which diagnostic test is used to confirm a diagnosis of meningitis?",
+        options: [
+            "CT scan of the head",
+            "Lumbar puncture",
+            "MRI of the brain",
+            "EEG"
+        ],
+        correct: 1
+    },
+    {
+        id: 16,
+        text: "A patient with Parkinson's disease has a shuffling gait. What is the best nursing intervention?",
+        options: [
+            "Encourage rapid walking",
+            "Use a walker with wheels",
+            "Teach the patient to lift feet while walking",
+            "Restrict mobility"
+        ],
+        correct: 2
+    },
+    {
+        id: 17,
+        text: "Which symptom is associated with a transient ischemic attack (TIA)?",
+        options: [
+            "Permanent paralysis",
+            "Speech difficulty lasting less than 24 hours",
+            "Memory loss that worsens",
+            "Seizure activity"
+        ],
+        correct: 1
+    },
+    {
+        id: 18,
+        text: "The nurse is caring for a patient with a new tracheostomy. What is the priority intervention?",
+        options: [
+            "Change the tracheostomy ties daily",
+            "Suction as needed",
+            "Keep humidity at 30%",
+            "Inflate the cuff to 25 mmHg"
+        ],
+        correct: 1
+    },
+    {
+        id: 19,
+        text: "Which position should be avoided in a patient with a head injury?",
+        options: [
+            "Fowler's position",
+            "Supine position",
+            "Trendelenburg position",
+            "Lateral position"
+        ],
+        correct: 2
+    },
+    {
+        id: 20,
+        text: "What is the Glasgow Coma Scale (GCS) score for a patient who opens eyes to pain, makes incomprehensible sounds, and withdraws from pain?",
+        options: [
+            "8",
+            "9",
+            "10",
+            "11"
+        ],
+        correct: 1
+    },
+    {
+        id: 21,
+        text: "A patient with a brain injury has a urine output of 400 mL/hour. What condition should the nurse suspect?",
+        options: [
+            "SIADH",
+            "Diabetes insipidus",
+            "Renal failure",
+            "Urinary tract infection"
+        ],
+        correct: 1
+    },
+    {
+        id: 22,
+        text: "Which intervention is most effective in preventing pulmonary embolism in a patient with a spinal cord injury?",
+        options: [
+            "Ambulation",
+            "Anti-embolic stockings",
+            "Heparin therapy",
+            "Range of motion exercises"
+        ],
+        correct: 2
+    },
+    {
+        id: 23,
+        text: "The nurse is assessing a patient with Bell's palsy. What finding is expected?",
+        options: [
+            "Inability to close one eye",
+            "Bilateral facial weakness",
+            "Complete paralysis of the tongue",
+            "Loss of taste sensation"
+        ],
+        correct: 0
+    },
+    {
+        id: 24,
+        text: "What is the most common cause of bacterial meningitis in adults?",
+        options: [
+            "Haemophilus influenzae",
+            "Neisseria meningitidis",
+            "Streptococcus pneumoniae",
+            "Listeria monocytogenes"
+        ],
+        correct: 2
+    },
+    {
+        id: 25,
+        text: "A patient has aphasia after a stroke. What should the nurse do to facilitate communication?",
+        options: [
+            "Speak loudly",
+            "Use a picture board",
+            "Avoid eye contact",
+            "Limit conversation"
+        ],
+        correct: 1
+    }
+];
 
     // --- State ---
     let currentIndex = 0; // 0-based
