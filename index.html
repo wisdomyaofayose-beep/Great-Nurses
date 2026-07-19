@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam Simulator - Neurological</title>
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Great Nurses - Examination Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
+        /* ---------- RESET ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -15,7 +15,7 @@
         }
 
         body {
-            background: #f0f2f5;
+            background: #f0f4f8;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,19 +23,166 @@
             padding: 20px;
         }
 
-        .exam-container {
-            max-width: 850px;
+        /* ========================================
+                   LANDING PAGE
+                ======================================== */
+        .landing-container {
+            max-width: 600px;
             width: 100%;
-            background-color: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-            overflow: hidden;
-            padding: 28px 32px 24px;
-            transition: 0.3s;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            padding: 50px 40px 40px;
+            text-align: center;
+            display: block;
         }
 
-        /* --- Header --- */
-        .header {
+        .logo-badge {
+            background: #1e3a5f;
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 6px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0b1e33;
+            line-height: 1.1;
+        }
+
+        .main-title span {
+            color: #1e6f9f;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #64748b;
+            font-weight: 400;
+            margin: 6px 0 24px;
+            letter-spacing: 4px;
+        }
+
+        .tagline span {
+            font-weight: 600;
+            color: #0b1e33;
+        }
+
+        .welcome-badge {
+            background: #eaf6ff;
+            color: #0369a1;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 60px;
+            display: inline-block;
+            margin-bottom: 28px;
+        }
+
+        .login-form {
+            text-align: left;
+        }
+
+        .login-form label {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .login-form .input-group {
+            position: relative;
+            margin-bottom: 14px;
+        }
+
+        .login-form .input-group i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .login-form .input-group input {
+            width: 100%;
+            padding: 14px 16px 14px 42px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: 0.2s;
+            background: #f8fafc;
+        }
+
+        .login-form .input-group input:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            background: #0b1e33;
+            color: #ffffff;
+            border: none;
+            border-radius: 60px;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .login-btn:hover {
+            background: #1a3655;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(11, 30, 51, 0.20);
+        }
+
+        .login-error {
+            color: #dc2626;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            display: none;
+            text-align: center;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        .footer-note {
+            margin-top: 24px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        /* ========================================
+                   ADMIN DASHBOARD
+                ======================================== */
+        .admin-container {
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            padding: 28px 32px 32px;
+            display: none;
+        }
+
+        .admin-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,48 +192,364 @@
             gap: 12px;
         }
 
-        .candidate-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .admin-header h2 {
+            font-size: 1.3rem;
+            color: #0b1e33;
         }
 
-        .candidate-name {
+        .admin-header h2 i {
+            color: #2563eb;
+            margin-right: 10px;
+        }
+
+        .admin-header .admin-badge {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 6px 18px;
+            border-radius: 40px;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 0.85rem;
+        }
+
+        .admin-header .logout-btn {
+            background: #f1f5f9;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-header .logout-btn:hover {
+            background: #e2e8f0;
+        }
+
+        /* Admin Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 14px;
+            margin: 20px 0 24px;
+        }
+
+        .stat-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 16px 14px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .stat-card .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0b1e33;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .stat-card .stat-icon {
+            font-size: 1.2rem;
+            color: #2563eb;
+            margin-bottom: 4px;
+        }
+
+        /* Admin Tabs */
+        .admin-tabs {
+            display: flex;
+            gap: 4px;
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab {
+            padding: 10px 18px;
+            border: none;
+            background: transparent;
+            border-radius: 10px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.85rem;
+            flex: 1;
+            min-width: 80px;
+        }
+
+        .admin-tab.active {
+            background: #ffffff;
+            color: #0b1e33;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .admin-tab:hover:not(.active) {
+            color: #0b1e33;
+        }
+
+        .admin-section {
+            display: none;
+        }
+
+        .admin-section.active {
+            display: block;
+        }
+
+        /* Category Selector */
+        .category-selector {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .category-selector button {
+            padding: 8px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 30px;
+            background: #f8fafc;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .category-selector button.active {
+            background: #1e3a5f;
+            color: #fff;
+            border-color: #1e3a5f;
+        }
+
+        .category-selector button:hover:not(.active) {
+            background: #e2e8f0;
+        }
+
+        /* Add Question Form */
+        .add-question-form {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .add-question-form h4 {
+            margin-bottom: 12px;
+            color: #0b1e33;
+        }
+
+        .add-question-form textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            resize: vertical;
+            min-height: 60px;
+            background: #fff;
+            margin-bottom: 10px;
+        }
+
+        .add-question-form textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .add-question-form .options-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .add-question-form .options-row input {
+            padding: 10px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            background: #fff;
+        }
+
+        .add-question-form .options-row input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .add-question-form .form-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .add-question-form .form-row select {
+            padding: 10px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            background: #fff;
+        }
+
+        .add-question-form .form-row select:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .add-question-form .form-row button {
+            padding: 10px 28px;
+            background: #1e3a5f;
+            color: #fff;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .add-question-form .form-row button:hover {
+            background: #0b1e33;
+        }
+
+        .add-question-form .form-row button.delete-btn {
+            background: #dc2626;
+        }
+
+        .add-question-form .form-row button.delete-btn:hover {
+            background: #b91c1c;
+        }
+
+        /* Question List */
+        .question-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .question-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 8px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .question-item .q-text {
+            flex: 1;
+            font-size: 0.9rem;
+            color: #0b1e33;
+        }
+
+        .question-item .q-text .q-id {
+            font-weight: 700;
+            color: #2563eb;
+            margin-right: 8px;
+        }
+
+        .question-item .q-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .question-item .q-actions button {
+            padding: 4px 14px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .question-item .q-actions .edit-btn {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .question-item .q-actions .edit-btn:hover {
+            background: #bfdbfe;
+        }
+
+        .question-item .q-actions .del-btn {
+            background: #fef2f2;
+            color: #991b1b;
+        }
+
+        .question-item .q-actions .del-btn:hover {
+            background: #fecaca;
+        }
+
+        /* ========================================
+                   EXAM CONTAINER
+                ======================================== */
+        .exam-container {
+            max-width: 850px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            padding: 28px 32px 24px;
+            display: none;
+        }
+
+        .exam-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 14px;
+            border-bottom: 2px solid #f0f2f5;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .exam-header .candidate-name {
+            font-weight: 600;
+            font-size: 1rem;
             color: #1e293b;
         }
 
-        .candidate-name i {
+        .exam-header .candidate-name i {
             color: #3b82f6;
             margin-right: 8px;
         }
 
-        .timer {
-            background: #fef2f2;
-            color: #b91c1c;
-            padding: 6px 14px;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 1rem;
+        .exam-header .exam-stats {
             display: flex;
             align-items: center;
-            gap: 8px;
-            border: 1px solid #fecaca;
-        }
-
-        .stats {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+            gap: 14px;
             font-weight: 500;
             color: #475569;
+            font-size: 0.9rem;
         }
 
-        .stats span {
+        .exam-header .exam-stats span {
             background: #f8fafc;
             padding: 4px 12px;
             border-radius: 40px;
+        }
+
+        .exam-header .timer {
+            background: #fef2f2;
+            color: #b91c1c;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 1px solid #fecaca;
         }
 
         .flagged-badge {
@@ -95,7 +558,7 @@
             padding: 4px 14px;
             border-radius: 40px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             border: 1px solid #fde047;
             display: none;
         }
@@ -103,44 +566,57 @@
             display: inline-block;
         }
 
-        /* --- Subject Tag --- */
-        .subject-tag {
-            margin: 20px 0 18px;
+        .exam-category {
+            margin: 16px 0 14px;
         }
-        .subject-tag span {
+        .exam-category span {
             background: #dbeafe;
             color: #1e40af;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 0.5px;
-            padding: 6px 18px;
+            padding: 5px 16px;
             border-radius: 30px;
             text-transform: uppercase;
         }
 
-        /* --- Question --- */
+        .exam-category select {
+            padding: 6px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            background: #fff;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .exam-category select:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
         .question-text {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: #0f172a;
             line-height: 1.5;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
-        /* --- Options --- */
         .options-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 32px;
+            gap: 10px;
+            margin-bottom: 28px;
         }
 
         .option-item {
             background: #f8fafc;
             border: 2px solid #e2e8f0;
             border-radius: 12px;
-            padding: 14px 20px;
-            font-size: 1rem;
+            padding: 12px 18px;
+            font-size: 0.95rem;
             color: #1e293b;
             cursor: pointer;
             transition: 0.2s ease;
@@ -157,27 +633,25 @@
         .option-item.selected {
             background: #eff6ff;
             border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
 
         .option-item .letter {
             font-weight: 700;
             color: #64748b;
-            min-width: 28px;
+            min-width: 26px;
         }
         .option-item.selected .letter {
             color: #2563eb;
         }
 
-        /* --- Footer --- */
-        .footer-actions {
+        .exam-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 10px;
-            padding-top: 18px;
+            gap: 12px;
+            padding-top: 14px;
             border-top: 2px solid #f0f2f5;
         }
 
@@ -186,12 +660,12 @@
             border: none;
             color: #64748b;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             cursor: pointer;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 40px;
             transition: 0.2s;
         }
@@ -208,21 +682,22 @@
         .pagination {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
         }
         .pagination .counter {
             font-weight: 500;
             color: #334155;
+            font-size: 0.9rem;
         }
 
         .nav-buttons {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
         .nav-btn {
             background: white;
             border: 1px solid #cbd5e1;
-            padding: 8px 18px;
+            padding: 6px 16px;
             border-radius: 40px;
             font-weight: 600;
             color: #1e293b;
@@ -230,7 +705,8 @@
             transition: 0.15s;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
+            font-size: 0.85rem;
         }
         .nav-btn:hover:not(:disabled) {
             background: #f1f5f9;
@@ -241,491 +717,839 @@
             cursor: not-allowed;
         }
 
-        /* Responsive */
+        .submit-exam-btn {
+            background: #16a34a;
+            color: #fff;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .submit-exam-btn:hover {
+            background: #15803d;
+        }
+
+        /* ========================================
+                   RESPONSIVE
+                ======================================== */
         @media (max-width: 600px) {
+            .landing-container { padding: 30px 20px; }
             .exam-container { padding: 18px; }
-            .header { flex-direction: column; align-items: stretch; }
-            .stats { justify-content: space-between; flex-wrap: wrap; }
-            .footer-actions { flex-direction: column; align-items: stretch; }
-            .pagination { justify-content: space-between; }
-            .question-text { font-size: 1.1rem; }
+            .admin-container { padding: 16px; }
+            .main-title { font-size: 1.8rem; }
+            .add-question-form .options-row { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .admin-header { flex-direction: column; align-items: stretch; }
+            .admin-tabs { flex-wrap: wrap; }
+            .exam-header { flex-direction: column; align-items: stretch; }
+            .exam-footer { flex-direction: column; align-items: stretch; }
+            .question-item { flex-direction: column; align-items: stretch; }
+            .category-selector { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-<div class="exam-container" id="app">
-    <!-- Header -->
-    <div class="header">
-        <div class="candidate-info">
-            <span class="candidate-name"><i class="fas fa-user-circle"></i> Wisdom Baptizo</span>
+    <!-- ============================================
+    LANDING PAGE
+    ============================================ -->
+    <div class="landing-container" id="landingPage">
+        <div class="logo-badge"><i class="fas fa-graduation-cap"></i> GREAT NURSES</div>
+        <h1 class="main-title">Examination Portal</h1>
+        <p class="tagline"><span>Learn</span> · <span>Care</span> · <span>Excel</span></p>
+
+        <div class="welcome-badge">
+            <i class="fas fa-hand-wave"></i> Welcome! Login to continue
         </div>
-        <div class="stats">
-            <span class="timer"><i class="fas fa-hourglass-half"></i> <span id="timerDisplay">44:50</span></span>
-            <span><i class="fas fa-list-ul"></i> <span id="currentQ">1</span>/60</span>
-            <span class="flagged-badge" id="flaggedBadge"><i class="fas fa-flag"></i> FLAGGED</span>
-        </div>
+
+        <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Enter your username" required />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Enter your password" required />
+            </div>
+
+            <div class="login-error" id="loginError">
+                <i class="fas fa-exclamation-circle"></i> Invalid username or password. Please try again.
+            </div>
+
+            <button type="submit" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+        </form>
+
+        <p class="footer-note">© 2026 Great Nurses · Examination Portal</p>
     </div>
 
-    <!-- Subject -->
-    <div class="subject-tag">
-        <span><i class="fas fa-brain"></i> NEUROLOGICAL</span>
-    </div>
-
-    <!-- Question -->
-    <div class="question-text" id="questionText">
-        An appropriate nursing intervention for Altered Cerebral Tissue Perfusion related to cerebral edema is?
-    </div>
-
-    <!-- Options -->
-    <div class="options-list" id="optionsContainer">
-        <div class="option-item" data-index="0" data-letter="A">
-            <span class="letter">A.</span> Avoiding positioning the patient with neck and hip flexion
+    <!-- ============================================
+    ADMIN DASHBOARD
+    ============================================ -->
+    <div class="admin-container" id="adminContainer">
+        <div class="admin-header">
+            <h2><i class="fas fa-chart-simple"></i> Admin Dashboard</h2>
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                <span class="admin-badge"><i class="fas fa-shield-alt"></i> Administrator</span>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
         </div>
-        <div class="option-item" data-index="1" data-letter="B">
-            <span class="letter">B.</span> Routine suctioning to prevent accumulation of respiratory secretions
-        </div>
-        <div class="option-item" data-index="2" data-letter="C">
-            <span class="letter">C.</span> Maintaining hyperventilation to PaCO2 of 15-20 mmHg
-        </div>
-        <div class="option-item" data-index="3" data-letter="D">
-            <span class="letter">D.</span> Clustering nursing activities to provide uninterrupted rest
-        </div>
-    </div>
 
-    <!-- Footer -->
-    <div class="footer-actions">
-        <button class="flag-btn" id="flagBtn"><i class="fas fa-flag"></i> Flag for later</button>
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-list"></i></div>
+                <div class="stat-number" id="totalQuestions">0</div>
+                <div class="stat-label">Total Questions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-folder"></i></div>
+                <div class="stat-number">3</div>
+                <div class="stat-label">Categories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-number">50</div>
+                <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="stat-number">12</div>
+                <div class="stat-label">Exams Taken</div>
+            </div>
+        </div>
 
-        <div class="pagination">
-            <span class="counter">Question <span id="qCounter">1</span> of 60</span>
-            <div class="nav-buttons">
-                <button class="nav-btn" id="prevBtn" disabled><i class="fas fa-chevron-left"></i> Prev</button>
-                <button class="nav-btn" id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+        <!-- Tabs -->
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="questions" onclick="switchTab('questions')">
+                <i class="fas fa-list"></i> Questions
+            </button>
+            <button class="admin-tab" data-tab="add" onclick="switchTab('add')">
+                <i class="fas fa-plus"></i> Add Question
+            </button>
+            <button class="admin-tab" data-tab="students" onclick="switchTab('students')">
+                <i class="fas fa-users"></i> Students
+            </button>
+        </div>
+
+        <!-- Tab: Questions -->
+        <div class="admin-section active" id="tab-questions">
+            <div class="category-selector" id="adminCategorySelector">
+                <button class="active" data-cat="neurological" onclick="switchAdminCategory('neurological')">🧠 Neurological</button>
+                <button data-cat="surgical" onclick="switchAdminCategory('surgical')">🏥 Surgical</button>
+                <button data-cat="pharmacology" onclick="switchAdminCategory('pharmacology')">💊 Pharmacology</button>
+            </div>
+            <div class="question-list" id="adminQuestionList">
+                <!-- Questions will be rendered here -->
+            </div>
+        </div>
+
+        <!-- Tab: Add Question -->
+        <div class="admin-section" id="tab-add">
+            <div class="add-question-form">
+                <h4><i class="fas fa-plus-circle"></i> Add New Question</h4>
+                <textarea id="newQuestionText" placeholder="Enter the question text..."></textarea>
+                <div class="options-row">
+                    <input type="text" id="newOptA" placeholder="Option A" />
+                    <input type="text" id="newOptB" placeholder="Option B" />
+                    <input type="text" id="newOptC" placeholder="Option C" />
+                    <input type="text" id="newOptD" placeholder="Option D" />
+                </div>
+                <div class="form-row">
+                    <select id="newCategory">
+                        <option value="neurological">🧠 Neurological</option>
+                        <option value="surgical">🏥 Surgical</option>
+                        <option value="pharmacology">💊 Pharmacology</option>
+                    </select>
+                    <select id="newCorrect">
+                        <option value="0">A</option>
+                        <option value="1">B</option>
+                        <option value="2">C</option>
+                        <option value="3">D</option>
+                    </select>
+                    <button onclick="addQuestion()"><i class="fas fa-save"></i> Save Question</button>
+                </div>
+            </div>
+
+            <div style="margin-top:12px;">
+                <h4><i class="fas fa-upload"></i> Bulk Import Questions</h4>
+                <p style="font-size:0.85rem; color:#64748b; margin-bottom:8px;">
+                    Paste questions in format: <strong>Question? | A | B | C | D | correct(0-3) | category</strong>
+                </p>
+                <textarea id="bulkImport" style="width:100%; padding:12px; border:2px solid #e2e8f0; border-radius:10px; min-height:120px; font-size:0.9rem; resize:vertical;"></textarea>
+                <button onclick="bulkImport()" style="margin-top:8px; padding:10px 28px; background:#1e3a5f; color:#fff; border:none; border-radius:40px; font-weight:600; cursor:pointer;">
+                    <i class="fas fa-upload"></i> Import Questions
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab: Students -->
+        <div class="admin-section" id="tab-students">
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Student Name</th>
+                            <th>Email</th>
+                            <th>Exams</th>
+                            <th>Avg Score</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Wisdom Baptizo</strong></td>
+                            <td>wisdom@example.com</td>
+                            <td>3</td>
+                            <td>85%</td>
+                            <td><span class="status-badge passed">Passed</span></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Sarah Mensah</strong></td>
+                            <td>sarah@example.com</td>
+                            <td>2</td>
+                            <td>72%</td>
+                            <td><span class="status-badge passed">Passed</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>John Atta</strong></td>
+                            <td>john@example.com</td>
+                            <td>1</td>
+                            <td>45%</td>
+                            <td><span class="status-badge failed">Failed</span></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>Kofi Asare</strong></td>
+                            <td>kofi@example.com</td>
+                            <td>2</td>
+                            <td>91%</td>
+                            <td><span class="status-badge passed">Passed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    // --- Mock Data (for demonstration) ---
-    const questions = [
-    {
-        id: 1,
-        text: "An appropriate nursing intervention for Altered Cerebral Tissue Perfusion related to cerebral edema is?",
-        options: [
-            "Avoiding positioning the patient with neck and hip flexion",
-            "Routine suctioning to prevent accumulation of respiratory secretions",
-            "Maintaining hyperventilation to PaCO2 of 15-20 mmHg",
-            "Clustering nursing activities to provide uninterrupted rest"
-        ],
-        correct: 0
-    },
-    {
-        id: 2,
-        text: "A client with increased intracranial pressure (ICP) should be placed in which position to promote venous drainage?",
-        options: [
-            "Supine with legs elevated",
-            "Trendelenburg position",
-            "Head of bed elevated 30 degrees",
-            "Left lateral recumbent"
-        ],
-        correct: 2
-    },
-    {
-        id: 3,
-        text: "Which of the following is an early sign of increased intracranial pressure?",
-        options: [
-            "Widening pulse pressure",
-            "Decreased level of consciousness",
-            "Posturing",
-            "Fixed dilated pupils"
-        ],
-        correct: 1
-    },
-    {
-        id: 4,
-        text: "What is the normal range for intracranial pressure (ICP)?",
-        options: [
-            "0-5 mmHg",
-            "5-15 mmHg",
-            "15-30 mmHg",
-            "30-45 mmHg"
-        ],
-        correct: 1
-    },
-    {
-        id: 5,
-        text: "Which nursing intervention is most important for a patient with a head injury?",
-        options: [
-            "Monitor intake and output",
-            "Assess neurological status every hour",
-            "Encourage ambulation",
-            "Provide a high-protein diet"
-        ],
-        correct: 1
-    },
-    {
-        id: 6,
-        text: "The nurse is caring for a patient with a subdural hematoma. Which finding indicates increased ICP?",
-        options: [
-            "Decreased heart rate",
-            "Increased respiratory rate",
-            "Decreased blood pressure",
-            "Increased pulse rate"
-        ],
-        correct: 0
-    },
-    {
-        id: 7,
-        text: "A patient is exhibiting decorticate posturing. What does this indicate?",
-        options: [
-            "Damage to the brainstem",
-            "Damage to the cerebral hemispheres",
-            "Damage to the spinal cord",
-            "Damage to the cerebellum"
-        ],
-        correct: 1
-    },
-    {
-        id: 8,
-        text: "Which medication is commonly used to reduce cerebral edema?",
-        options: [
-            "Heparin",
-            "Mannitol",
-            "Dopamine",
-            "Digoxin"
-        ],
-        correct: 1
-    },
-    {
-        id: 9,
-        text: "The nurse should avoid which action when caring for a patient with increased ICP?",
-        options: [
-            "Elevating the head of the bed",
-            "Suctioning frequently",
-            "Minimizing environmental stimuli",
-            "Administering sedatives as ordered"
-        ],
-        correct: 1
-    },
-    {
-        id: 10,
-        text: "What is the priority nursing diagnosis for a patient with a brain tumor?",
-        options: [
-            "Risk for injury",
-            "Impaired physical mobility",
-            "Altered cerebral tissue perfusion",
-            "Deficient knowledge"
-        ],
-        correct: 2
-    },
-    {
-        id: 11,
-        text: "A patient with a stroke has difficulty swallowing. What should the nurse do first?",
-        options: [
-            "Offer thickened liquids",
-            "Consult with a speech therapist",
-            "Place the patient in a supine position",
-            "Administer IV fluids"
-        ],
-        correct: 1
-    },
-    {
-        id: 12,
-        text: "Which assessment finding is most concerning in a patient with a head injury?",
-        options: [
-            "Glasgow Coma Scale score of 15",
-            "Unequal pupil size",
-            "Headache rated 3/10",
-            "Vomiting once"
-        ],
-        correct: 1
-    },
-    {
-        id: 13,
-        text: "The nurse is assessing a patient with a spinal cord injury. Which finding indicates autonomic dysreflexia?",
-        options: [
-            "Hypotension and bradycardia",
-            "Hypertension and bradycardia",
-            "Hypotension and tachycardia",
-            "Hypertension and tachycardia"
-        ],
-        correct: 1
-    },
-    {
-        id: 14,
-        text: "What is the immediate nursing action for a patient having a seizure?",
-        options: [
-            "Restrain the patient",
-            "Insert an oral airway",
-            "Protect the patient from injury",
-            "Administer oxygen"
-        ],
-        correct: 2
-    },
-    {
-        id: 15,
-        text: "Which diagnostic test is used to confirm a diagnosis of meningitis?",
-        options: [
-            "CT scan of the head",
-            "Lumbar puncture",
-            "MRI of the brain",
-            "EEG"
-        ],
-        correct: 1
-    },
-    {
-        id: 16,
-        text: "A patient with Parkinson's disease has a shuffling gait. What is the best nursing intervention?",
-        options: [
-            "Encourage rapid walking",
-            "Use a walker with wheels",
-            "Teach the patient to lift feet while walking",
-            "Restrict mobility"
-        ],
-        correct: 2
-    },
-    {
-        id: 17,
-        text: "Which symptom is associated with a transient ischemic attack (TIA)?",
-        options: [
-            "Permanent paralysis",
-            "Speech difficulty lasting less than 24 hours",
-            "Memory loss that worsens",
-            "Seizure activity"
-        ],
-        correct: 1
-    },
-    {
-        id: 18,
-        text: "The nurse is caring for a patient with a new tracheostomy. What is the priority intervention?",
-        options: [
-            "Change the tracheostomy ties daily",
-            "Suction as needed",
-            "Keep humidity at 30%",
-            "Inflate the cuff to 25 mmHg"
-        ],
-        correct: 1
-    },
-    {
-        id: 19,
-        text: "Which position should be avoided in a patient with a head injury?",
-        options: [
-            "Fowler's position",
-            "Supine position",
-            "Trendelenburg position",
-            "Lateral position"
-        ],
-        correct: 2
-    },
-    {
-        id: 20,
-        text: "What is the Glasgow Coma Scale (GCS) score for a patient who opens eyes to pain, makes incomprehensible sounds, and withdraws from pain?",
-        options: [
-            "8",
-            "9",
-            "10",
-            "11"
-        ],
-        correct: 1
-    },
-    {
-        id: 21,
-        text: "A patient with a brain injury has a urine output of 400 mL/hour. What condition should the nurse suspect?",
-        options: [
-            "SIADH",
-            "Diabetes insipidus",
-            "Renal failure",
-            "Urinary tract infection"
-        ],
-        correct: 1
-    },
-    {
-        id: 22,
-        text: "Which intervention is most effective in preventing pulmonary embolism in a patient with a spinal cord injury?",
-        options: [
-            "Ambulation",
-            "Anti-embolic stockings",
-            "Heparin therapy",
-            "Range of motion exercises"
-        ],
-        correct: 2
-    },
-    {
-        id: 23,
-        text: "The nurse is assessing a patient with Bell's palsy. What finding is expected?",
-        options: [
-            "Inability to close one eye",
-            "Bilateral facial weakness",
-            "Complete paralysis of the tongue",
-            "Loss of taste sensation"
-        ],
-        correct: 0
-    },
-    {
-        id: 24,
-        text: "What is the most common cause of bacterial meningitis in adults?",
-        options: [
-            "Haemophilus influenzae",
-            "Neisseria meningitidis",
-            "Streptococcus pneumoniae",
-            "Listeria monocytogenes"
-        ],
-        correct: 2
-    },
-    {
-        id: 25,
-        text: "A patient has aphasia after a stroke. What should the nurse do to facilitate communication?",
-        options: [
-            "Speak loudly",
-            "Use a picture board",
-            "Avoid eye contact",
-            "Limit conversation"
-        ],
-        correct: 1
-    }
-];
+    <!-- ============================================
+    EXAM CONTAINER
+    ============================================ -->
+    <div class="exam-container" id="examContainer">
+        <div class="exam-header">
+            <div class="candidate-name">
+                <i class="fas fa-user-circle"></i> <span id="studentName">Student</span>
+            </div>
+            <div class="exam-stats">
+                <span class="timer"><i class="fas fa-hourglass-half"></i> <span id="timerDisplay">44:50</span></span>
+                <span><i class="fas fa-list-ul"></i> <span id="currentQ">1</span>/<span id="totalQ">50</span></span>
+                <span class="flagged-badge" id="flaggedBadge"><i class="fas fa-flag"></i> FLAGGED</span>
+            </div>
+        </div>
 
-    // --- State ---
-    let currentIndex = 0; // 0-based
-    const totalQuestions = questions.length;
-    let selectedAnswers = new Array(totalQuestions).fill(null); // stores index of selected option
-    let flaggedStatus = new Array(totalQuestions).fill(false);
-    let timerSeconds = 2690; // 44:50
+        <div class="exam-category">
+            <span id="examCategoryLabel"><i class="fas fa-brain"></i> NEUROLOGICAL</span>
+            <select id="categorySelector" onchange="switchCategory()">
+                <option value="neurological">🧠 Neurological</option>
+                <option value="surgical">🏥 Surgical</option>
+                <option value="pharmacology">💊 Pharmacology</option>
+            </select>
+        </div>
 
-    // DOM refs
-    const questionText = document.getElementById('questionText');
-    const optionsContainer = document.getElementById('optionsContainer');
-    const optionItems = document.querySelectorAll('.option-item');
-    const flagBtn = document.getElementById('flagBtn');
-    const flaggedBadge = document.getElementById('flaggedBadge');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const currentQSpan = document.getElementById('currentQ');
-    const qCounterSpan = document.getElementById('qCounter');
-    const timerDisplay = document.getElementById('timerDisplay');
+        <div class="question-text" id="questionText">
+            Loading question...
+        </div>
 
-    // --- Render Functions ---
-    function renderQuestion(index) {
-        const q = questions[index];
-        if (!q) return;
+        <div class="options-list" id="optionsContainer">
+            <div class="option-item" data-index="0" data-letter="A">
+                <span class="letter">A.</span> Option A
+            </div>
+            <div class="option-item" data-index="1" data-letter="B">
+                <span class="letter">B.</span> Option B
+            </div>
+            <div class="option-item" data-index="2" data-letter="C">
+                <span class="letter">C.</span> Option C
+            </div>
+            <div class="option-item" data-index="3" data-letter="D">
+                <span class="letter">D.</span> Option D
+            </div>
+        </div>
 
-        // Update question text
-        questionText.textContent = q.text;
+        <div class="exam-footer">
+            <button class="flag-btn" id="flagBtn"><i class="fas fa-flag"></i> Flag for later</button>
+            <div class="pagination">
+                <span class="counter">Question <span id="qCounter">1</span> of <span id="totalQ2">50</span></span>
+                <div class="nav-buttons">
+                    <button class="nav-btn" id="prevBtn" disabled><i class="fas fa-chevron-left"></i> Prev</button>
+                    <button class="nav-btn" id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <button class="submit-exam-btn" onclick="submitExam()"><i class="fas fa-check"></i> Submit Exam</button>
+        </div>
+    </div>
 
-        // Update options
-        const optionLetters = ['A', 'B', 'C', 'D'];
-        const optionDivs = optionsContainer.querySelectorAll('.option-item');
-        q.options.forEach((opt, i) => {
-            if (optionDivs[i]) {
-                optionDivs[i].innerHTML = `<span class="letter">${optionLetters[i]}.</span> ${opt}`;
+    <!-- ============================================
+    JAVASCRIPT
+    ============================================ -->
+    <script>
+        // ==========================================
+        // DATA LAYER - Using LocalStorage
+        // ==========================================
+        const CATEGORIES = ['neurological', 'surgical', 'pharmacology'];
+        const CATEGORY_LABELS = {
+            neurological: '🧠 NEUROLOGICAL',
+            surgical: '🏥 SURGICAL NURSING',
+            pharmacology: '💊 PHARMACOLOGY'
+        };
+
+        // Default questions (50 per category - we'll generate 50 for each)
+        function getDefaultQuestions() {
+            const baseQuestions = {
+                neurological: [],
+                surgical: [],
+                pharmacology: []
+            };
+
+            // Generate 50 neurological questions
+            const neuroTopics = [
+                'Increased intracranial pressure', 'Head injury', 'Stroke',
+                'Meningitis', 'Seizures', 'Parkinson\'s disease', 'Alzheimer\'s disease',
+                'Spinal cord injury', 'Brain tumor', 'Cerebral edema',
+                'Subdural hematoma', 'Epidural hematoma', 'Cerebral perfusion',
+                'Neurological assessment', 'Glasgow Coma Scale', 'Decorticate posturing',
+                'Decerebrate posturing', 'Cerebrovascular accident', 'Transient ischemic attack',
+                'Multiple sclerosis', 'Guillain-Barré syndrome', 'Myasthenia gravis',
+                'Huntington\'s disease', 'Amyotrophic lateral sclerosis', 'Bell\'s palsy'
+            ];
+
+            for (let i = 0; i < 50; i++) {
+                const topic = neuroTopics[i % neuroTopics.length];
+                const a = `Intervention A for ${topic}`;
+                const b = `Intervention B for ${topic}`;
+                const c = `Intervention C for ${topic}`;
+                const d = `Intervention D for ${topic}`;
+                const correct = Math.floor(Math.random() * 4);
+                baseQuestions.neurological.push({
+                    id: i + 1,
+                    text: `Which nursing intervention is most appropriate for a patient with ${topic}?`,
+                    options: [a, b, c, d],
+                    correct: correct
+                });
+            }
+
+            // Generate 50 surgical questions
+            const surgicalTopics = [
+                'Preoperative care', 'Postoperative care', 'Wound healing',
+                'Infection control', 'Pain management', 'Fluid balance',
+                'Surgical asepsis', 'Incision care', 'Drain management',
+                'Suture removal', 'Wound dehiscence', 'Surgical complications',
+                'Deep vein thrombosis', 'Pulmonary embolism', 'Hemorrhage',
+                'Shock', 'Blood transfusion', 'Catheter care', 'Stoma care',
+                'Pressure ulcers', 'Nutritional support', 'Mobility after surgery'
+            ];
+
+            for (let i = 0; i < 50; i++) {
+                const topic = surgicalTopics[i % surgicalTopics.length];
+                const a = `Action A for ${topic}`;
+                const b = `Action B for ${topic}`;
+                const c = `Action C for ${topic}`;
+                const d = `Action D for ${topic}`;
+                const correct = Math.floor(Math.random() * 4);
+                baseQuestions.surgical.push({
+                    id: i + 1,
+                    text: `What is the best nursing action for ${topic}?`,
+                    options: [a, b, c, d],
+                    correct: correct
+                });
+            }
+
+            // Generate 50 pharmacology questions
+            const pharmaTopics = [
+                'Analgesics', 'Antibiotics', 'Antihypertensives', 'Diuretics',
+                'Anticoagulants', 'Antiarrhythmics', 'Bronchodilators', 'Corticosteroids',
+                'Antidepressants', 'Antipsychotics', 'Antiepileptics', 'Antidiabetics',
+                'Antihistamines', 'Antacids', 'Laxatives', 'Sedatives',
+                'Stimulants', 'Vasodilators', 'Antiemetics', 'Antifungals',
+                'Antivirals', 'Immunosuppressants', 'Hormones', 'Vitamins'
+            ];
+
+            for (let i = 0; i < 50; i++) {
+                const topic = pharmaTopics[i % pharmaTopics.length];
+                const a = `Medication A for ${topic}`;
+                const b = `Medication B for ${topic}`;
+                const c = `Medication C for ${topic}`;
+                const d = `Medication D for ${topic}`;
+                const correct = Math.floor(Math.random() * 4);
+                baseQuestions.pharmacology.push({
+                    id: i + 1,
+                    text: `Which medication is most commonly used as a ${topic.toLowerCase()}?`,
+                    options: [a, b, c, d],
+                    correct: correct
+                });
+            }
+
+            return baseQuestions;
+        }
+
+        function loadQuestions() {
+            let data = localStorage.getItem('greatNursesQuestions');
+            if (data) {
+                try {
+                    return JSON.parse(data);
+                } catch (e) {
+                    // If corrupted, reset
+                }
+            }
+            // Initialize with defaults
+            const defaults = getDefaultQuestions();
+            localStorage.setItem('greatNursesQuestions', JSON.stringify(defaults));
+            return defaults;
+        }
+
+        function saveQuestions(data) {
+            localStorage.setItem('greatNursesQuestions', JSON.stringify(data));
+        }
+
+        let questionData = loadQuestions();
+
+        // ==========================================
+        // LOGIN SYSTEM
+        // ==========================================
+        const ADMIN_PASSWORD = "eduame";
+        const STUDENT_PASSWORD = "easymoves";
+
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorEl = document.getElementById('loginError');
+
+            // Check if admin
+            if (password === ADMIN_PASSWORD) {
+                errorEl.classList.remove('show');
+                document.getElementById('landingPage').style.display = 'none';
+                document.getElementById('adminContainer').style.display = 'block';
+                renderAdminQuestions('neurological');
+                updateStats();
+                return;
+            }
+
+            // Check if student (any username with easymoves)
+            if (password === STUDENT_PASSWORD && username.length > 0) {
+                errorEl.classList.remove('show');
+                document.getElementById('landingPage').style.display = 'none';
+                document.getElementById('studentName').textContent = username;
+                document.getElementById('examContainer').style.display = 'block';
+                startExam('neurological');
+                return;
+            }
+
+            // Invalid
+            errorEl.classList.add('show');
+            document.getElementById('password').value = '';
+        }
+
+        // Enter key support
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+        });
+        document.getElementById('username').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+        });
+
+        // ==========================================
+        // LOGOUT
+        // ==========================================
+        function logout() {
+            document.getElementById('adminContainer').style.display = 'none';
+            document.getElementById('examContainer').style.display = 'none';
+            document.getElementById('landingPage').style.display = 'block';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('loginError').classList.remove('show');
+            stopTimer();
+        }
+
+        // ==========================================
+        // ADMIN FUNCTIONS
+        // ==========================================
+        let adminCurrentCategory = 'neurological';
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`.admin-tab[data-tab="${tabName}"]`).classList.add('active');
+            document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+            if (tabName === 'questions') renderAdminQuestions(adminCurrentCategory);
+        }
+
+        function switchAdminCategory(category) {
+            adminCurrentCategory = category;
+            document.querySelectorAll('#adminCategorySelector button').forEach(b => b.classList.remove('active'));
+            document.querySelector(`#adminCategorySelector button[data-cat="${category}"]`).classList.add('active');
+            renderAdminQuestions(category);
+        }
+
+        function renderAdminQuestions(category) {
+            const list = document.getElementById('adminQuestionList');
+            const qs = questionData[category] || [];
+            if (qs.length === 0) {
+                list.innerHTML = `<p style="color:#64748b; text-align:center; padding:30px 0;">No questions in this category. Add some!</p>`;
+                return;
+            }
+            let html = '';
+            qs.forEach((q, idx) => {
+                const letters = ['A', 'B', 'C', 'D'];
+                html += `
+                    <div class="question-item">
+                        <div class="q-text">
+                            <span class="q-id">#${idx + 1}</span>
+                            ${q.text}
+                            <span style="font-size:0.75rem; color:#2563eb; margin-left:8px;">
+                                ✓ ${letters[q.correct]}
+                            </span>
+                        </div>
+                        <div class="q-actions">
+                            <button class="edit-btn" onclick="editQuestion('${category}', ${idx})">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="del-btn" onclick="deleteQuestion('${category}', ${idx})">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            list.innerHTML = html;
+            updateStats();
+        }
+
+        function addQuestion() {
+            const text = document.getElementById('newQuestionText').value.trim();
+            const optA = document.getElementById('newOptA').value.trim();
+            const optB = document.getElementById('newOptB').value.trim();
+            const optC = document.getElementById('newOptC').value.trim();
+            const optD = document.getElementById('newOptD').value.trim();
+            const category = document.getElementById('newCategory').value;
+            const correct = parseInt(document.getElementById('newCorrect').value);
+
+            if (!text || !optA || !optB || !optC || !optD) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (!questionData[category]) questionData[category] = [];
+            questionData[category].push({
+                id: questionData[category].length + 1,
+                text: text,
+                options: [optA, optB, optC, optD],
+                correct: correct
+            });
+
+            saveQuestions(questionData);
+            renderAdminQuestions(adminCurrentCategory);
+            updateStats();
+
+            // Clear form
+            document.getElementById('newQuestionText').value = '';
+            document.getElementById('newOptA').value = '';
+            document.getElementById('newOptB').value = '';
+            document.getElementById('newOptC').value = '';
+            document.getElementById('newOptD').value = '';
+            alert('Question added successfully!');
+        }
+
+        function editQuestion(category, index) {
+            const q = questionData[category][index];
+            const newText = prompt('Edit question:', q.text);
+            if (newText === null) return;
+            const newOptA = prompt('Option A:', q.options[0]);
+            if (newOptA === null) return;
+            const newOptB = prompt('Option B:', q.options[1]);
+            if (newOptB === null) return;
+            const newOptC = prompt('Option C:', q.options[2]);
+            if (newOptC === null) return;
+            const newOptD = prompt('Option D:', q.options[3]);
+            if (newOptD === null) return;
+            const newCorrect = prompt('Correct answer (0=A, 1=B, 2=C, 3=D):', q.correct);
+            if (newCorrect === null) return;
+
+            q.text = newText;
+            q.options = [newOptA, newOptB, newOptC, newOptD];
+            q.correct = parseInt(newCorrect);
+
+            saveQuestions(questionData);
+            renderAdminQuestions(adminCurrentCategory);
+            alert('Question updated!');
+        }
+
+        function deleteQuestion(category, index) {
+            if (!confirm(`Delete question #${index + 1}?`)) return;
+            questionData[category].splice(index, 1);
+            // Re-index
+            questionData[category].forEach((q, i) => q.id = i + 1);
+            saveQuestions(questionData);
+            renderAdminQuestions(adminCurrentCategory);
+            updateStats();
+        }
+
+        function bulkImport() {
+            const text = document.getElementById('bulkImport').value.trim();
+            if (!text) { alert('Please paste questions to import.'); return; }
+
+            const lines = text.split('\n').filter(l => l.trim());
+            let count = 0;
+            for (const line of lines) {
+                const parts = line.split('|').map(s => s.trim());
+                if (parts.length < 7) continue;
+                const question = parts[0];
+                const a = parts[1];
+                const b = parts[2];
+                const c = parts[3];
+                const d = parts[4];
+                const correct = parseInt(parts[5]);
+                const category = parts[6].toLowerCase().trim();
+
+                if (!CATEGORIES.includes(category)) continue;
+                if (!questionData[category]) questionData[category] = [];
+
+                questionData[category].push({
+                    id: questionData[category].length + 1,
+                    text: question,
+                    options: [a, b, c, d],
+                    correct: correct
+                });
+                count++;
+            }
+
+            saveQuestions(questionData);
+            renderAdminQuestions(adminCurrentCategory);
+            updateStats();
+            document.getElementById('bulkImport').value = '';
+            alert(`Imported ${count} questions successfully!`);
+        }
+
+        function updateStats() {
+            let total = 0;
+            for (const cat of CATEGORIES) {
+                total += (questionData[cat] || []).length;
+            }
+            document.getElementById('totalQuestions').textContent = total;
+        }
+
+        // ==========================================
+        // EXAM FUNCTIONS
+        // ==========================================
+        let examState = {
+            category: 'neurological',
+            currentIndex: 0,
+            answers: {},
+            flagged: {},
+            timerInterval: null,
+            seconds: 2690,
+            submitted: false
+        };
+
+        function startExam(category) {
+            examState.category = category;
+            examState.currentIndex = 0;
+            examState.answers = {};
+            examState.flagged = {};
+            examState.seconds = 2690;
+            examState.submitted = false;
+
+            document.getElementById('categorySelector').value = category;
+            renderExamQuestion();
+            startTimer();
+        }
+
+        function switchCategory() {
+            const cat = document.getElementById('categorySelector').value;
+            examState.category = cat;
+            examState.currentIndex = 0;
+            examState.answers = {};
+            examState.flagged = {};
+            renderExamQuestion();
+        }
+
+        function getCategoryQuestions() {
+            return questionData[examState.category] || [];
+        }
+
+        function renderExamQuestion() {
+            const qs = getCategoryQuestions();
+            if (qs.length === 0) {
+                document.getElementById('questionText').textContent = 'No questions available in this category.';
+                document.getElementById('optionsContainer').style.display = 'none';
+                document.getElementById('totalQ').textContent = '0';
+                document.getElementById('totalQ2').textContent = '0';
+                return;
+            }
+
+            document.getElementById('optionsContainer').style.display = 'block';
+            document.getElementById('totalQ').textContent = qs.length;
+            document.getElementById('totalQ2').textContent = qs.length;
+
+            const q = qs[examState.currentIndex];
+            document.getElementById('questionText').textContent = q.text;
+
+            const letters = ['A', 'B', 'C', 'D'];
+            const optionDivs = document.querySelectorAll('.option-item');
+            q.options.forEach((opt, i) => {
+                optionDivs[i].innerHTML = `<span class="letter">${letters[i]}.</span> ${opt}`;
                 optionDivs[i].dataset.index = i;
-                // Remove selected class
                 optionDivs[i].classList.remove('selected');
-                // Highlight if this option was previously selected
-                if (selectedAnswers[currentIndex] === i) {
+                const key = examState.currentIndex;
+                if (examState.answers[key] === i) {
                     optionDivs[i].classList.add('selected');
                 }
+            });
+
+            document.getElementById('currentQ').textContent = examState.currentIndex + 1;
+            document.getElementById('qCounter').textContent = examState.currentIndex + 1;
+
+            // Flag status
+            const isFlagged = examState.flagged[examState.currentIndex] || false;
+            const flagBtn = document.getElementById('flagBtn');
+            const badge = document.getElementById('flaggedBadge');
+            if (isFlagged) {
+                flagBtn.classList.add('flagged');
+                flagBtn.innerHTML = '<i class="fas fa-flag"></i> Flagged';
+                badge.classList.add('active');
+            } else {
+                flagBtn.classList.remove('flagged');
+                flagBtn.innerHTML = '<i class="fas fa-flag"></i> Flag for later';
+                badge.classList.remove('active');
+            }
+
+            // Nav buttons
+            document.getElementById('prevBtn').disabled = examState.currentIndex === 0;
+            document.getElementById('nextBtn').disabled = examState.currentIndex === qs.length - 1;
+
+            // Category label
+            document.getElementById('examCategoryLabel').innerHTML =
+                `<i class="fas fa-${examState.category === 'neurological' ? 'brain' : examState.category === 'surgical' ? 'hospital' : 'pills'}"></i> ${CATEGORY_LABELS[examState.category]}`;
+        }
+
+        // Option click
+        document.getElementById('optionsContainer').addEventListener('click', function(e) {
+            const optionDiv = e.target.closest('.option-item');
+            if (!optionDiv) return;
+            if (examState.submitted) return;
+
+            const qs = getCategoryQuestions();
+            if (qs.length === 0) return;
+
+            const index = parseInt(optionDiv.dataset.index);
+            if (isNaN(index)) return;
+
+            // Deselect all
+            document.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
+            optionDiv.classList.add('selected');
+            examState.answers[examState.currentIndex] = index;
+        });
+
+        // Flag button
+        document.getElementById('flagBtn').addEventListener('click', function() {
+            if (examState.submitted) return;
+            examState.flagged[examState.currentIndex] = !examState.flagged[examState.currentIndex];
+            renderExamQuestion();
+        });
+
+        // Navigation
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            if (examState.currentIndex > 0) {
+                examState.currentIndex--;
+                renderExamQuestion();
             }
         });
 
-        // Update counter
-        currentQSpan.textContent = index + 1;
-        qCounterSpan.textContent = index + 1;
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            const qs = getCategoryQuestions();
+            if (examState.currentIndex < qs.length - 1) {
+                examState.currentIndex++;
+                renderExamQuestion();
+            }
+        });
 
-        // Update flag button & badge
-        updateFlagUI(index);
-
-        // Update prev/next buttons
-        prevBtn.disabled = index === 0;
-        nextBtn.disabled = index === totalQuestions - 1;
-    }
-
-    function updateFlagUI(index) {
-        const isFlagged = flaggedStatus[index];
-        if (isFlagged) {
-            flagBtn.classList.add('flagged');
-            flagBtn.innerHTML = '<i class="fas fa-flag"></i> Flagged';
-            flaggedBadge.classList.add('active');
-        } else {
-            flagBtn.classList.remove('flagged');
-            flagBtn.innerHTML = '<i class="fas fa-flag"></i> Flag for later';
-            flaggedBadge.classList.remove('active');
+        // Timer
+        function startTimer() {
+            if (examState.timerInterval) clearInterval(examState.timerInterval);
+            examState.timerInterval = setInterval(function() {
+                if (examState.seconds <= 0) {
+                    clearInterval(examState.timerInterval);
+                    document.getElementById('timerDisplay').textContent = '00:00';
+                    alert('Time is up! Your exam will be submitted.');
+                    submitExam();
+                    return;
+                }
+                examState.seconds--;
+                const mins = Math.floor(examState.seconds / 60);
+                const secs = examState.seconds % 60;
+                document.getElementById('timerDisplay').textContent =
+                    `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }, 1000);
         }
-    }
 
-    // --- Event Listeners ---
-
-    // Option click (delegated)
-    optionsContainer.addEventListener('click', (e) => {
-        const optionDiv = e.target.closest('.option-item');
-        if (!optionDiv) return;
-        const index = parseInt(optionDiv.dataset.index);
-        if (isNaN(index)) return;
-
-        // Deselect all
-        optionItems.forEach(el => el.classList.remove('selected'));
-        // Select clicked
-        optionDiv.classList.add('selected');
-        // Save answer
-        selectedAnswers[currentIndex] = index;
-    });
-
-    // Flag button
-    flagBtn.addEventListener('click', () => {
-        flaggedStatus[currentIndex] = !flaggedStatus[currentIndex];
-        updateFlagUI(currentIndex);
-    });
-
-    // Navigation
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            renderQuestion(currentIndex);
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentIndex < totalQuestions - 1) {
-            currentIndex++;
-            renderQuestion(currentIndex);
-        }
-    });
-
-    // --- Timer ---
-    function updateTimer() {
-        if (timerSeconds <= 0) {
-            timerDisplay.textContent = "00:00";
-            return;
-        }
-        timerSeconds--;
-        const mins = Math.floor(timerSeconds / 60);
-        const secs = timerSeconds % 60;
-        timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-    }
-
-    // Start timer (update every second)
-    setInterval(updateTimer, 1000);
-
-    // --- Initial Render ---
-    renderQuestion(0);
-
-    // (Optional) Pre-select answer for Q1 to show demo state: select "A"
-    // We'll just set it programmatically for demo:
-    setTimeout(() => {
-        // simulate that user selected option A for Q1
-        if (selectedAnswers[0] === null) {
-            const firstOption = optionsContainer.querySelector('.option-item');
-            if (firstOption) {
-                firstOption.classList.add('selected');
-                selectedAnswers[0] = 0;
+        function stopTimer() {
+            if (examState.timerInterval) {
+                clearInterval(examState.timerInterval);
+                examState.timerInterval = null;
             }
         }
-    }, 100);
 
-    console.log('Exam Simulator Loaded. Try flagging, navigating, and selecting answers.');
-</script>
+        function submitExam() {
+            if (examState.submitted) return;
+            examState.submitted = true;
+            stopTimer();
+
+            const qs = getCategoryQuestions();
+            let correct = 0;
+            let answered = 0;
+
+            for (let i = 0; i < qs.length; i++) {
+                if (examState.answers[i] !== undefined) {
+                    answered++;
+                    if (examState.answers[i] === qs[i].correct) {
+                        correct++;
+                    }
+                }
+            }
+
+            const total = qs.length;
+            const score = Math.round((correct / total) * 100);
+            const passed = score >= 60;
+
+            alert(`📊 Exam Results\n\nCategory: ${CATEGORY_LABELS[examState.category]}\nAnswered: ${answered}/${total}\nCorrect: ${correct}/${total}\nScore: ${score}%\nStatus: ${passed ? '✅ PASSED' : '❌ FAILED'}\n\nThank you for taking the exam!`);
+
+            // Reset or allow review
+            if (confirm('Would you like to review your answers?')) {
+                examState.submitted = false;
+                renderExamQuestion();
+            } else {
+                // Go back to landing
+                logout();
+            }
+        }
+
+        // ==========================================
+        // INIT
+        // ==========================================
+        // Render default
+        updateStats();
+    </script>
 
 </body>
 </html>
