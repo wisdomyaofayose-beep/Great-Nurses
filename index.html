@@ -46,7 +46,7 @@
         }
 
         /* ============================================
-           WATERMARK (appears during exam)
+           WATERMARK
         ============================================ */
         .watermark-overlay {
             position: fixed;
@@ -62,9 +62,7 @@
             overflow: hidden;
         }
 
-        .watermark-overlay.active {
-            display: flex;
-        }
+        .watermark-overlay.active { display: flex; }
 
         .watermark-overlay .watermark-text {
             font-size: 6rem;
@@ -99,7 +97,7 @@
         }
 
         /* ============================================
-           TOAST NOTIFICATIONS
+           TOAST
         ============================================ */
         .toast-container {
             position: fixed;
@@ -161,9 +159,7 @@
             line-height: 1.1;
         }
 
-        .landing-container .logo span {
-            color: var(--secondary);
-        }
+        .landing-container .logo span { color: var(--secondary); }
 
         .landing-container .logo-sub {
             font-size: 0.7rem;
@@ -309,6 +305,177 @@
         }
 
         /* ============================================
+           STUDENT DASHBOARD
+        ============================================ */
+        .student-wrapper {
+            display: none;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+
+        .student-wrapper.show { display: block; }
+
+        .student-header {
+            background: var(--primary);
+            color: #fff;
+            padding: 16px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .student-header .student-brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .student-header .student-brand span { color: #60a5fa; }
+
+        .student-header .student-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .student-header .student-info .student-name {
+            font-weight: 600;
+        }
+
+        .student-header .student-info .logout-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .student-header .student-info .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .student-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 28px;
+        }
+
+        .student-content .welcome-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            margin-bottom: 24px;
+        }
+
+        .student-content .welcome-banner h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .student-content .welcome-banner p {
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+
+        .student-section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin: 20px 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .student-section-title i { color: var(--secondary); }
+
+        /* Subject Cards with Topics */
+        .subject-card {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .subject-card .subject-header {
+            padding: 16px 20px;
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .subject-card .subject-header:hover {
+            background: var(--gray-100);
+        }
+
+        .subject-card .subject-header .subject-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--gray-900);
+        }
+
+        .subject-card .subject-header .subject-icon {
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        .subject-card .subject-body {
+            padding: 12px 20px 16px;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .topic-item {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .topic-item:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .topic-item .topic-name {
+            font-weight: 600;
+            color: var(--gray-800);
+            font-size: 0.9rem;
+        }
+
+        .topic-item .topic-count {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-top: 2px;
+        }
+
+        .topic-item .topic-icon {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* ============================================
            ADMIN DASHBOARD
         ============================================ */
         .admin-wrapper {
@@ -336,7 +503,7 @@
 
         .admin-sidebar .sidebar-brand {
             padding: 0 20px 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 12px;
         }
 
@@ -352,7 +519,7 @@
 
         .admin-sidebar .sidebar-brand .brand-sub {
             font-size: 0.6rem;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
             letter-spacing: 2px;
         }
 
@@ -367,7 +534,7 @@
             gap: 10px;
             padding: 10px 14px;
             border-radius: var(--radius);
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             cursor: pointer;
             font-size: 0.85rem;
@@ -376,12 +543,12 @@
         }
 
         .admin-sidebar .sidebar-nav li a:hover {
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
             color: #fff;
         }
 
         .admin-sidebar .sidebar-nav li a.active {
-            background: rgba(255,255,255,0.12);
+            background: rgba(255, 255, 255, 0.12);
             color: #fff;
         }
 
@@ -392,7 +559,7 @@
 
         .admin-sidebar .sidebar-nav li a .badge {
             margin-left: auto;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             padding: 1px 8px;
             border-radius: 40px;
             font-size: 0.65rem;
@@ -412,14 +579,14 @@
             gap: 10px;
             padding: 10px 14px;
             border-radius: var(--radius);
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
             cursor: pointer;
             font-size: 0.85rem;
             transition: var(--transition);
         }
 
         .admin-sidebar .sidebar-footer .logout-link:hover {
-            background: rgba(239,68,68,0.15);
+            background: rgba(239, 68, 68, 0.15);
             color: #f87171;
         }
 
@@ -481,7 +648,6 @@
             background: var(--gray-200);
         }
 
-        /* Admin Stats */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -532,7 +698,6 @@
             font-weight: 500;
         }
 
-        /* Admin Content Sections */
         .admin-section {
             display: none;
             animation: fadeIn 0.3s ease;
@@ -596,63 +761,87 @@
             background: #1d4ed8;
         }
 
-        .card-header .card-actions .danger-btn {
-            background: #fef2f2;
-            color: var(--danger);
-        }
-
-        .card-header .card-actions .danger-btn:hover {
-            background: #fecaca;
-        }
-
         .card-body {
             padding: 16px 20px;
         }
 
-        /* Category Tabs */
-        .category-tabs {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
+        /* Subject/Topic Management */
+        .admin-subject-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
 
-        .category-tab {
-            padding: 6px 16px;
-            border: 2px solid var(--gray-200);
+        @media (max-width: 768px) {
+            .admin-subject-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .admin-subject-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 16px;
+        }
+
+        .admin-subject-card .subject-title {
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-subject-card .topic-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .admin-subject-card .topic-item-admin {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: #fff;
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+        }
+
+        .admin-subject-card .topic-item-admin .topic-name {
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--gray-700);
+        }
+
+        .admin-subject-card .topic-item-admin .topic-actions {
+            display: flex;
+            gap: 4px;
+        }
+
+        .admin-subject-card .topic-item-admin .topic-actions button {
+            padding: 2px 10px;
+            border: none;
             border-radius: 30px;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.65rem;
             cursor: pointer;
             transition: var(--transition);
-            background: #fff;
-            color: var(--gray-600);
         }
 
-        .category-tab:hover {
-            background: var(--gray-100);
-            border-color: var(--gray-300);
+        .admin-subject-card .topic-item-admin .topic-actions .edit-btn {
+            background: #dbeafe;
+            color: #1e40af;
         }
 
-        .category-tab.active {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
+        .admin-subject-card .topic-item-admin .topic-actions .delete-btn {
+            background: #fef2f2;
+            color: #991b1b;
         }
 
-        .category-tab .count {
-            background: rgba(255,255,255,0.2);
-            padding: 0 6px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            margin-left: 4px;
-        }
-
-        .category-tab.active .count {
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* Lesson/Question Items */
+        /* Item Lists */
         .item-list {
             max-height: 400px;
             overflow-y: auto;
@@ -749,7 +938,7 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(37,99,235,0.08);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
         }
 
         .form-group textarea {
@@ -798,146 +987,6 @@
         }
 
         /* ============================================
-           STUDENT DASHBOARD
-        ============================================ */
-        .student-wrapper {
-            display: none;
-            min-height: 100vh;
-            position: relative;
-            z-index: 1;
-        }
-
-        .student-wrapper.show { display: block; }
-
-        .student-header {
-            background: var(--primary);
-            color: #fff;
-            padding: 16px 28px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .student-header .student-brand {
-            font-size: 1.2rem;
-            font-weight: 800;
-        }
-
-        .student-header .student-brand span {
-            color: #60a5fa;
-        }
-
-        .student-header .student-info {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .student-header .student-info .student-name {
-            font-weight: 600;
-        }
-
-        .student-header .student-info .logout-btn {
-            background: rgba(255,255,255,0.15);
-            border: none;
-            color: #fff;
-            padding: 6px 16px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .student-header .student-info .logout-btn:hover {
-            background: rgba(255,255,255,0.25);
-        }
-
-        .student-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px 28px;
-        }
-
-        .student-content .welcome-banner {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #fff;
-            border-radius: var(--radius);
-            padding: 28px 32px;
-            margin-bottom: 24px;
-        }
-
-        .student-content .welcome-banner h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .student-content .welcome-banner p {
-            opacity: 0.8;
-            margin-top: 4px;
-        }
-
-        .student-section-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--gray-900);
-            margin: 20px 0 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .student-section-title i {
-            color: var(--secondary);
-        }
-
-        .student-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-        }
-
-        .student-card {
-            background: #fff;
-            border-radius: var(--radius);
-            padding: 20px 24px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--gray-200);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .student-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .student-card .card-icon {
-            font-size: 2rem;
-            color: var(--secondary);
-            margin-bottom: 8px;
-        }
-
-        .student-card .card-title {
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: var(--gray-900);
-        }
-
-        .student-card .card-desc {
-            font-size: 0.85rem;
-            color: var(--gray-500);
-            margin-top: 4px;
-        }
-
-        .student-card .card-count {
-            font-size: 0.75rem;
-            color: var(--gray-400);
-            margin-top: 8px;
-        }
-
-        /* ============================================
            EXAM INTERFACE
         ============================================ */
         .exam-wrapper {
@@ -970,9 +1019,7 @@
             font-size: 1rem;
         }
 
-        .exam-header-bar .exam-brand span {
-            color: var(--secondary);
-        }
+        .exam-header-bar .exam-brand span { color: var(--secondary); }
 
         .exam-header-bar .exam-info {
             display: flex;
@@ -981,6 +1028,7 @@
             font-size: 0.85rem;
             font-weight: 500;
             color: var(--gray-600);
+            flex-wrap: wrap;
         }
 
         .exam-header-bar .exam-info .timer {
@@ -1224,7 +1272,7 @@
         .exam-content .option-item.selected {
             background: #eff6ff;
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
         }
 
         .exam-content .option-item .letter {
@@ -1299,7 +1347,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.8);
             display: none;
             justify-content: center;
             align-items: center;
@@ -1334,6 +1382,7 @@
         .overlay .popup i.danger-icon { color: var(--danger); }
         .overlay .popup i.success-icon { color: var(--success); }
         .overlay .popup i.info-icon { color: var(--accent); }
+        .overlay .popup i.motivation-icon { color: #f59e0b; }
 
         .overlay .popup h3 {
             color: var(--gray-900);
@@ -1344,6 +1393,17 @@
             color: var(--gray-500);
             font-size: 0.95rem;
             line-height: 1.6;
+        }
+
+        .overlay .popup .motivation-message {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 12px 0;
+            padding: 16px;
+            background: var(--gray-50);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--secondary);
         }
 
         .overlay .popup button {
@@ -1421,7 +1481,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             display: none;
             justify-content: center;
             align-items: center;
@@ -1588,6 +1648,14 @@
                 font-size: 1.5rem;
                 margin-top: 30px;
             }
+
+            .admin-subject-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topic-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1595,7 +1663,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .student-cards {
+            .topic-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1624,6 +1692,10 @@
             .modal {
                 padding: 16px;
             }
+
+            .student-cards {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Prevent text selection during exam */
@@ -1647,7 +1719,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0, 0, 0, 0.9);
             display: none;
             justify-content: center;
             align-items: center;
@@ -1674,7 +1746,7 @@
         }
 
         .screenshot-blocker .blocker-content p {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.95rem;
         }
     </style>
@@ -1758,6 +1830,93 @@
     </div>
 
     <!-- ============================================
+    STUDENT DASHBOARD
+    ============================================ -->
+    <div class="student-wrapper" id="studentWrapper">
+        <div class="student-header">
+            <div class="student-brand">Great<span>Nurses</span></div>
+            <div class="student-info">
+                <span class="student-name"><i class="fas fa-user-circle"></i> <span id="studentDisplayName">Student</span></span>
+                <button class="logout-btn" onclick="studentLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+
+        <div class="student-content">
+            <div class="welcome-banner">
+                <h2>Welcome, <span id="welcomeName">Student</span>! 👋</h2>
+                <p>Choose a subject below to start learning or testing your knowledge.</p>
+            </div>
+
+            <div class="student-section-title">
+                <i class="fas fa-book-open"></i> Learning Portal
+            </div>
+            <div id="learningPortalContainer"></div>
+
+            <div class="student-section-title" style="margin-top:28px;">
+                <i class="fas fa-pencil-alt"></i> Examination Categories
+            </div>
+            <div id="examPortalContainer"></div>
+        </div>
+    </div>
+
+    <!-- ============================================
+    EXAM INTERFACE
+    ============================================ -->
+    <div class="exam-wrapper" id="examWrapper">
+        <div class="exam-header-bar">
+            <div class="exam-brand">Great<span>Nurses</span></div>
+            <div class="exam-info">
+                <span><i class="fas fa-user"></i> <span id="examStudentName">Student</span></span>
+                <span><i class="fas fa-tag"></i> <span id="examTopicName">Topic</span></span>
+                <span class="timer"><i class="fas fa-hourglass-half"></i> <span id="examTimer">20:00</span></span>
+                <span class="flag-badge" id="examFlagBadge"><i class="fas fa-flag"></i> Flagged</span>
+                <span><i class="fas fa-list"></i> <span id="examProgress">0/0</span></span>
+            </div>
+        </div>
+
+        <div class="exam-body">
+            <!-- Sidebar -->
+            <div class="exam-sidebar">
+                <div class="sidebar-label">Questions</div>
+                <div class="question-grid" id="questionGrid"></div>
+                <div class="sidebar-legend">
+                    <span class="legend-item"><span class="legend-dot answered"></span> Done</span>
+                    <span class="legend-item"><span class="legend-dot flagged"></span> Flagged</span>
+                    <span class="legend-item"><span class="legend-dot current"></span> Current</span>
+                    <span class="legend-item"><span class="legend-dot unanswered"></span> Pending</span>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="exam-content">
+                <div class="question-header">
+                    <span class="q-number">Question <span id="qNumDisplay">1</span> of <span id="qTotalDisplay">0</span></span>
+                    <div class="q-actions">
+                        <button class="flag-btn" id="examFlagBtn" onclick="toggleFlag()"><i class="fas fa-flag"></i> Flag</button>
+                    </div>
+                </div>
+
+                <div class="question-text" id="examQuestionText">Loading question...</div>
+
+                <div class="options-list" id="examOptionsContainer">
+                    <div class="option-item" data-index="0"><span class="letter">A.</span> Option A</div>
+                    <div class="option-item" data-index="1"><span class="letter">B.</span> Option B</div>
+                    <div class="option-item" data-index="2"><span class="letter">C.</span> Option C</div>
+                    <div class="option-item" data-index="3"><span class="letter">D.</span> Option D</div>
+                </div>
+
+                <div class="exam-footer-actions">
+                    <div class="nav-buttons">
+                        <button id="examPrevBtn" onclick="examPrev()"><i class="fas fa-chevron-left"></i> Prev</button>
+                        <button id="examNextBtn" onclick="examNext()">Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <button class="submit-btn" onclick="submitExam()"><i class="fas fa-check"></i> Submit Exam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
     ADMIN DASHBOARD
     ============================================ -->
     <div class="admin-wrapper" id="adminWrapper">
@@ -1801,36 +1960,7 @@
 
             <!-- Dashboard -->
             <div class="admin-section active" id="admin-dashboard">
-                <div class="stats-grid" id="adminStats">
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div class="stat-icon blue"><i class="fas fa-book"></i></div>
-                        </div>
-                        <div class="stat-number" id="statLessons">0</div>
-                        <div class="stat-label">Lessons</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div class="stat-icon green"><i class="fas fa-pencil-alt"></i></div>
-                        </div>
-                        <div class="stat-number" id="statQuestions">0</div>
-                        <div class="stat-label">Questions</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div class="stat-icon orange"><i class="fas fa-users"></i></div>
-                        </div>
-                        <div class="stat-number" id="statStudents">0</div>
-                        <div class="stat-label">Students</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div class="stat-icon purple"><i class="fas fa-check-circle"></i></div>
-                        </div>
-                        <div class="stat-number" id="statExams">0</div>
-                        <div class="stat-label">Exams Taken</div>
-                    </div>
-                </div>
+                <div class="stats-grid" id="adminStats"></div>
                 <div class="card">
                     <div class="card-header"><h3><i class="fas fa-clock"></i> Recent Activity</h3></div>
                     <div class="card-body" id="recentActivity">
@@ -1843,14 +1973,14 @@
             <div class="admin-section" id="admin-learning">
                 <div class="card">
                     <div class="card-header">
-                        <h3><i class="fas fa-book"></i> Learning Portal - Lesson Notes</h3>
+                        <h3><i class="fas fa-book"></i> Learning Portal - Subjects & Topics</h3>
                         <div class="card-actions">
+                            <button class="primary-btn" onclick="openAddTopicModal('learning')"><i class="fas fa-plus"></i> Add Topic</button>
                             <button class="primary-btn" onclick="openAddLessonModal()"><i class="fas fa-plus"></i> Add Lesson</button>
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="category-tabs" id="learningCategories"></div>
-                        <div class="item-list" id="lessonList"></div>
+                        <div class="admin-subject-grid" id="learningSubjectGrid"></div>
                     </div>
                 </div>
             </div>
@@ -1859,14 +1989,14 @@
             <div class="admin-section" id="admin-exams">
                 <div class="card">
                     <div class="card-header">
-                        <h3><i class="fas fa-pencil-alt"></i> Examination Categories</h3>
+                        <h3><i class="fas fa-pencil-alt"></i> Exam Categories - Subjects & Topics</h3>
                         <div class="card-actions">
+                            <button class="primary-btn" onclick="openAddTopicModal('exam')"><i class="fas fa-plus"></i> Add Topic</button>
                             <button class="primary-btn" onclick="openAddQuestionModal()"><i class="fas fa-plus"></i> Add Question</button>
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="category-tabs" id="examCategories"></div>
-                        <div class="item-list" id="questionList"></div>
+                        <div class="admin-subject-grid" id="examSubjectGrid"></div>
                     </div>
                 </div>
             </div>
@@ -1901,7 +2031,7 @@
                             <button class="primary-btn" onclick="exportData()"><i class="fas fa-download"></i> Export Data</button>
                             <button class="primary-btn" onclick="document.getElementById('importFile').click()"><i class="fas fa-upload"></i> Import Data</button>
                             <input type="file" id="importFile" accept=".json" style="display:none;" onchange="importData(event)" />
-                            <button class="danger-btn" onclick="resetAllData()"><i class="fas fa-trash"></i> Reset All Data</button>
+                            <button class="primary-btn" style="background:var(--danger);" onclick="resetAllData()"><i class="fas fa-trash"></i> Reset All Data</button>
                         </div>
                     </div>
                 </div>
@@ -1910,95 +2040,70 @@
     </div>
 
     <!-- ============================================
-    STUDENT DASHBOARD
-    ============================================ -->
-    <div class="student-wrapper" id="studentWrapper">
-        <div class="student-header">
-            <div class="student-brand">Great<span>Nurses</span></div>
-            <div class="student-info">
-                <span class="student-name"><i class="fas fa-user-circle"></i> <span id="studentDisplayName">Student</span></span>
-                <button class="logout-btn" onclick="studentLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
-            </div>
-        </div>
-
-        <div class="student-content">
-            <div class="welcome-banner">
-                <h2>Welcome, <span id="welcomeName">Student</span>! 👋</h2>
-                <p>Choose a section below to start learning or testing your knowledge.</p>
-            </div>
-
-            <div class="student-section-title">
-                <i class="fas fa-book-open"></i> Learning Portal
-            </div>
-            <div class="student-cards" id="learningPortalCards"></div>
-
-            <div class="student-section-title" style="margin-top:28px;">
-                <i class="fas fa-pencil-alt"></i> Examination Categories
-            </div>
-            <div class="student-cards" id="examPortalCards"></div>
-        </div>
-    </div>
-
-    <!-- ============================================
-    EXAM INTERFACE
-    ============================================ -->
-    <div class="exam-wrapper" id="examWrapper">
-        <div class="exam-header-bar">
-            <div class="exam-brand">Great<span>Nurses</span></div>
-            <div class="exam-info">
-                <span><i class="fas fa-user"></i> <span id="examStudentName">Student</span></span>
-                <span><i class="fas fa-tag"></i> <span id="examCategoryName">Category</span></span>
-                <span class="timer"><i class="fas fa-hourglass-half"></i> <span id="examTimer">20:00</span></span>
-                <span class="flag-badge" id="examFlagBadge"><i class="fas fa-flag"></i> Flagged</span>
-                <span><i class="fas fa-list"></i> <span id="examProgress">0/0</span></span>
-            </div>
-        </div>
-
-        <div class="exam-body">
-            <!-- Sidebar with question numbers -->
-            <div class="exam-sidebar">
-                <div class="sidebar-label">Questions</div>
-                <div class="question-grid" id="questionGrid"></div>
-                <div class="sidebar-legend">
-                    <span class="legend-item"><span class="legend-dot answered"></span> Done</span>
-                    <span class="legend-item"><span class="legend-dot flagged"></span> Flagged</span>
-                    <span class="legend-item"><span class="legend-dot current"></span> Current</span>
-                    <span class="legend-item"><span class="legend-dot unanswered"></span> Pending</span>
-                </div>
-            </div>
-
-            <!-- Main content -->
-            <div class="exam-content">
-                <div class="question-header">
-                    <span class="q-number">Question <span id="qNumDisplay">1</span> of <span id="qTotalDisplay">0</span></span>
-                    <div class="q-actions">
-                        <button class="flag-btn" id="examFlagBtn" onclick="toggleFlag()"><i class="fas fa-flag"></i> Flag</button>
-                    </div>
-                </div>
-
-                <div class="question-text" id="examQuestionText">Loading question...</div>
-
-                <div class="options-list" id="examOptionsContainer">
-                    <div class="option-item" data-index="0"><span class="letter">A.</span> Option A</div>
-                    <div class="option-item" data-index="1"><span class="letter">B.</span> Option B</div>
-                    <div class="option-item" data-index="2"><span class="letter">C.</span> Option C</div>
-                    <div class="option-item" data-index="3"><span class="letter">D.</span> Option D</div>
-                </div>
-
-                <div class="exam-footer-actions">
-                    <div class="nav-buttons">
-                        <button id="examPrevBtn" onclick="examPrev()"><i class="fas fa-chevron-left"></i> Prev</button>
-                        <button id="examNextBtn" onclick="examNext()">Next <i class="fas fa-chevron-right"></i></button>
-                    </div>
-                    <button class="submit-btn" onclick="submitExam()"><i class="fas fa-check"></i> Submit Exam</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================
     MODALS
     ============================================ -->
+    <!-- Add Topic Modal -->
+    <div class="modal-overlay" id="addTopicModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-plus-circle" style="color:var(--accent);"></i> Add Topic</h3>
+                <button class="close-modal" onclick="closeModal('addTopicModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Section</label>
+                    <select id="topicSection">
+                        <option value="learning">Learning Portal</option>
+                        <option value="exam">Exam Categories</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <select id="topicSubject"></select>
+                </div>
+                <div class="form-group">
+                    <label>Topic Name</label>
+                    <input type="text" id="topicName" placeholder="e.g., Cardiology" />
+                </div>
+                <div class="form-group">
+                    <label>Topic Icon (Font Awesome class)</label>
+                    <input type="text" id="topicIcon" placeholder="fa-heartbeat" value="fa-book" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-btn" onclick="closeModal('addTopicModal')">Cancel</button>
+                <button class="save-btn" onclick="saveTopic()">Add Topic</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Topic Modal -->
+    <div class="modal-overlay" id="editTopicModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit" style="color:var(--accent);"></i> Edit Topic</h3>
+                <button class="close-modal" onclick="closeModal('editTopicModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Topic Name</label>
+                    <input type="text" id="editTopicName" />
+                </div>
+                <div class="form-group">
+                    <label>Topic Icon</label>
+                    <input type="text" id="editTopicIcon" />
+                </div>
+                <input type="hidden" id="editTopicSection" />
+                <input type="hidden" id="editTopicSubject" />
+                <input type="hidden" id="editTopicIndex" />
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-btn" onclick="closeModal('editTopicModal')">Cancel</button>
+                <button class="save-btn" onclick="saveEditTopic()">Update Topic</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Add Lesson Modal -->
     <div class="modal-overlay" id="addLessonModal">
         <div class="modal">
@@ -2008,8 +2113,12 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Category</label>
-                    <select id="lessonCategory"></select>
+                    <label>Subject</label>
+                    <select id="lessonSubject"></select>
+                </div>
+                <div class="form-group">
+                    <label>Topic</label>
+                    <select id="lessonTopic"></select>
                 </div>
                 <div class="form-group">
                     <label>Lesson Title</label>
@@ -2027,6 +2136,39 @@
         </div>
     </div>
 
+    <!-- Edit Lesson Modal -->
+    <div class="modal-overlay" id="editLessonModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit" style="color:var(--accent);"></i> Edit Lesson</h3>
+                <button class="close-modal" onclick="closeModal('editLessonModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Subject</label>
+                    <select id="editLessonSubject"></select>
+                </div>
+                <div class="form-group">
+                    <label>Topic</label>
+                    <select id="editLessonTopic"></select>
+                </div>
+                <div class="form-group">
+                    <label>Lesson Title</label>
+                    <input type="text" id="editLessonTitle" />
+                </div>
+                <div class="form-group">
+                    <label>Lesson Content</label>
+                    <textarea id="editLessonContent" rows="6"></textarea>
+                </div>
+                <input type="hidden" id="editLessonIndex" />
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-btn" onclick="closeModal('editLessonModal')">Cancel</button>
+                <button class="save-btn" onclick="saveEditLesson()">Update Lesson</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Add Question Modal -->
     <div class="modal-overlay" id="addQuestionModal">
         <div class="modal">
@@ -2036,8 +2178,12 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Category</label>
-                    <select id="questionCategory"></select>
+                    <label>Subject</label>
+                    <select id="questionSubject"></select>
+                </div>
+                <div class="form-group">
+                    <label>Topic</label>
+                    <select id="questionTopic"></select>
                 </div>
                 <div class="form-group">
                     <label>Question Text</label>
@@ -2073,35 +2219,6 @@
         </div>
     </div>
 
-    <!-- Edit Lesson Modal -->
-    <div class="modal-overlay" id="editLessonModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3><i class="fas fa-edit" style="color:var(--accent);"></i> Edit Lesson</h3>
-                <button class="close-modal" onclick="closeModal('editLessonModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Category</label>
-                    <select id="editLessonCategory"></select>
-                </div>
-                <div class="form-group">
-                    <label>Lesson Title</label>
-                    <input type="text" id="editLessonTitle" />
-                </div>
-                <div class="form-group">
-                    <label>Lesson Content</label>
-                    <textarea id="editLessonContent" rows="6"></textarea>
-                </div>
-                <input type="hidden" id="editLessonIndex" />
-            </div>
-            <div class="modal-footer">
-                <button class="cancel-btn" onclick="closeModal('editLessonModal')">Cancel</button>
-                <button class="save-btn" onclick="saveEditLesson()">Update Lesson</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Edit Question Modal -->
     <div class="modal-overlay" id="editQuestionModal">
         <div class="modal">
@@ -2111,8 +2228,12 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Category</label>
-                    <select id="editQuestionCategory"></select>
+                    <label>Subject</label>
+                    <select id="editQuestionSubject"></select>
+                </div>
+                <div class="form-group">
+                    <label>Topic</label>
+                    <select id="editQuestionTopic"></select>
                 </div>
                 <div class="form-group">
                     <label>Question Text</label>
@@ -2136,7 +2257,8 @@
                     <select id="editCorrectAnswer"></select>
                 </div>
                 <input type="hidden" id="editQuestionIndex" />
-                <input type="hidden" id="editQuestionCategoryName" />
+                <input type="hidden" id="editQuestionSubjectName" />
+                <input type="hidden" id="editQuestionTopicName" />
             </div>
             <div class="modal-footer">
                 <button class="cancel-btn" onclick="closeModal('editQuestionModal')">Cancel</button>
@@ -2146,7 +2268,7 @@
     </div>
 
     <!-- ============================================
-    OVERLAYS (Copy/Tab/Blur warnings)
+    OVERLAYS
     ============================================ -->
     <div class="overlay" id="copyWarningOverlay">
         <div class="popup">
@@ -2166,13 +2288,17 @@
         </div>
     </div>
 
-    <div class="overlay" id="scoreOverlay">
+    <!-- Motivation & Score Overlay -->
+    <div class="overlay score-overlay" id="scoreOverlay">
         <div class="popup">
             <div class="score-icon" id="scoreIcon"><i class="fas fa-check-circle"></i></div>
             <h2>📊 Exam Results</h2>
             <div class="score-number" id="scoreNumber">0%</div>
             <div class="score-details" id="scoreDetails"></div>
             <div class="score-status" id="scoreStatus">PASSED</div>
+            <div class="motivation-message" id="motivationMessage">
+                🌟 Keep up the great work! Every step forward is progress.
+            </div>
             <button onclick="closeScoreAndExit()">Continue</button>
         </div>
     </div>
@@ -2184,29 +2310,37 @@
         // ============================================
         // DATA LAYER
         // ============================================
-        const CATEGORIES = ['Medical Nursing', 'Surgical Nursing', 'Obstetrics', 'Public Health Nursing'];
+        const SUBJECTS = ['Medical Nursing', 'Surgical Nursing', 'Obstetrics', 'Public Health Nursing'];
 
-        // Load data from localStorage
-        let lessonData = JSON.parse(localStorage.getItem('greatNursesLessons')) || {};
-        let questionData = JSON.parse(localStorage.getItem('greatNursesQuestions2')) || {};
+        // Data structure: { subject: { topic: { lessons: [], questions: [] } } }
+        let learningData = JSON.parse(localStorage.getItem('greatNursesLearning')) || {};
+        let examData = JSON.parse(localStorage.getItem('greatNursesExamData')) || {};
         let examResults = JSON.parse(localStorage.getItem('greatNursesExamResults')) || [];
         let examTimer = JSON.parse(localStorage.getItem('greatNursesTimer')) || { minutes: 20, seconds: 0 };
+        let currentStudent = '';
+        let sessionId = '';
 
-        // Ensure all categories exist
-        CATEGORIES.forEach(cat => {
-            if (!lessonData[cat]) lessonData[cat] = [];
-            if (!questionData[cat]) questionData[cat] = [];
+        // Initialize data structure
+        SUBJECTS.forEach(subject => {
+            if (!learningData[subject]) learningData[subject] = {};
+            if (!examData[subject]) examData[subject] = {};
         });
 
+        // Generate session ID
+        function generateSessionId() {
+            return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
+        }
+
         function saveData() {
-            localStorage.setItem('greatNursesLessons', JSON.stringify(lessonData));
-            localStorage.setItem('greatNursesQuestions2', JSON.stringify(questionData));
+            localStorage.setItem('greatNursesLearning', JSON.stringify(learningData));
+            localStorage.setItem('greatNursesExamData', JSON.stringify(examData));
             localStorage.setItem('greatNursesExamResults', JSON.stringify(examResults));
             localStorage.setItem('greatNursesTimer', JSON.stringify(examTimer));
+            localStorage.setItem('greatNursesSession', sessionId);
         }
 
         // ============================================
-        // TOAST SYSTEM
+        // TOAST
         // ============================================
         function showToast(message, type = 'info') {
             const container = document.getElementById('toastContainer');
@@ -2232,7 +2366,22 @@
         // ============================================
         const STUDENT_PASSWORD = "easymoves";
         const ADMIN_PASSWORD = "eduame";
-        let currentStudent = '';
+
+        // Check for existing session on page load
+        window.addEventListener('load', function() {
+            const savedSession = localStorage.getItem('greatNursesSession');
+            const savedStudent = localStorage.getItem('greatNursesCurrentStudent');
+            if (savedSession && savedStudent) {
+                sessionId = savedSession;
+                currentStudent = savedStudent;
+                document.getElementById('landingPage').style.display = 'none';
+                document.getElementById('studentWrapper').classList.add('show');
+                document.getElementById('studentDisplayName').textContent = currentStudent;
+                document.getElementById('welcomeName').textContent = currentStudent;
+                renderStudentDashboard();
+                showToast(`Welcome back, ${currentStudent}!`, 'success');
+            }
+        });
 
         function handleLogin(event) {
             event.preventDefault();
@@ -2249,6 +2398,9 @@
             if (password === STUDENT_PASSWORD) {
                 errorEl.classList.remove('show');
                 currentStudent = name;
+                sessionId = generateSessionId();
+                localStorage.setItem('greatNursesCurrentStudent', currentStudent);
+                localStorage.setItem('greatNursesSession', sessionId);
                 document.getElementById('landingPage').style.display = 'none';
                 document.getElementById('studentWrapper').classList.add('show');
                 document.getElementById('studentDisplayName').textContent = name;
@@ -2293,55 +2445,105 @@
         // STUDENT DASHBOARD
         // ============================================
         function renderStudentDashboard() {
-            const learningContainer = document.getElementById('learningPortalCards');
-            const examContainer = document.getElementById('examPortalCards');
+            renderStudentSection('learning', 'Learning Portal', document.getElementById('learningPortalContainer'));
+            renderStudentSection('exam', 'Examination Categories', document.getElementById('examPortalContainer'));
+        }
 
-            // Learning cards
-            learningContainer.innerHTML = CATEGORIES.map(cat => {
-                const count = (lessonData[cat] || []).length;
-                return `
-                    <div class="student-card" onclick="viewLessons('${cat}')">
-                        <div class="card-icon"><i class="fas fa-book"></i></div>
-                        <div class="card-title">${cat}</div>
-                        <div class="card-desc">${count} lesson notes available</div>
-                        <div class="card-count"><i class="fas fa-arrow-right"></i> View lessons</div>
+        function renderStudentSection(type, title, container) {
+            const data = type === 'learning' ? learningData : examData;
+            const icon = type === 'learning' ? 'fa-book-open' : 'fa-pencil-alt';
+
+            let html = '';
+            SUBJECTS.forEach(subject => {
+                const topics = data[subject] || {};
+                const topicKeys = Object.keys(topics);
+                if (topicKeys.length === 0) {
+                    html += `
+                        <div class="subject-card">
+                            <div class="subject-header">
+                                <span class="subject-name">${subject}</span>
+                                <span class="subject-icon"><i class="fas ${icon}"></i></span>
+                            </div>
+                            <div class="subject-body">
+                                <p style="color:var(--gray-500); font-size:0.85rem; text-align:center; padding:12px 0;">
+                                    No topics available yet.
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                html += `
+                    <div class="subject-card">
+                        <div class="subject-header" onclick="toggleSubject(this)">
+                            <span class="subject-name">${subject}</span>
+                            <span class="subject-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="subject-body">
+                            <div class="topic-grid">
+                `;
+
+                topicKeys.forEach(topic => {
+                    const items = type === 'learning' ? topics[topic].lessons || [] : topics[topic].questions ||
+                    [];
+                    const count = items.length;
+                    const iconClass = topics[topic].icon || 'fa-book';
+                    const clickAction = type === 'learning' ?
+                        `viewLessons('${subject}', '${topic}')` :
+                        `startExam('${subject}', '${topic}')`;
+                    html += `
+                        <div class="topic-item" onclick="${clickAction}">
+                            <span class="topic-icon"><i class="fas ${iconClass}"></i></span>
+                            <div class="topic-name">${topic}</div>
+                            <div class="topic-count">${count} ${type === 'learning' ? 'lessons' : 'questions'}</div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                            </div>
+                        </div>
                     </div>
                 `;
-            }).join('');
+            });
 
-            // Exam cards
-            examContainer.innerHTML = CATEGORIES.map(cat => {
-                const count = (questionData[cat] || []).length;
-                return `
-                    <div class="student-card" onclick="startExam('${cat}')">
-                        <div class="card-icon"><i class="fas fa-pencil-alt"></i></div>
-                        <div class="card-title">${cat}</div>
-                        <div class="card-desc">${count} practice questions</div>
-                        <div class="card-count"><i class="fas fa-play"></i> Start exam</div>
-                    </div>
-                `;
-            }).join('');
+            container.innerHTML = html;
+        }
 
-            updateAdminStats();
+        function toggleSubject(header) {
+            const body = header.parentElement.querySelector('.subject-body');
+            const icon = header.querySelector('.subject-icon i');
+            if (body.style.display === 'none') {
+                body.style.display = 'block';
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                body.style.display = 'none';
+                icon.className = 'fas fa-chevron-right';
+            }
         }
 
         // ============================================
         // VIEW LESSONS (Student)
         // ============================================
-        function viewLessons(category) {
-            const lessons = lessonData[category] || [];
+        function viewLessons(subject, topic) {
+            const lessons = learningData[subject]?.[topic]?.lessons || [];
             if (lessons.length === 0) {
-                showToast('No lessons available in this category.', 'warning');
+                showToast('No lessons available in this topic.', 'warning');
                 return;
             }
 
-            let html = `<div style="margin:20px 0;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-                    <h3 style="color:var(--gray-900);"><i class="fas fa-book"></i> ${category} - Lesson Notes</h3>
-                    <button onclick="renderStudentDashboard()" style="padding:6px 18px; border:1px solid var(--gray-200); border-radius:40px; background:#fff; cursor:pointer; font-weight:600;">
-                        <i class="fas fa-arrow-left"></i> Back
-                    </button>
-                </div>
+            let html = `
+                <div style="margin:20px 0;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                        <h3 style="color:var(--gray-900);">
+                            <i class="fas fa-book"></i> ${subject} - ${topic}
+                            <span style="font-weight:400; font-size:0.85rem; color:var(--gray-500);">(${lessons.length} lessons)</span>
+                        </h3>
+                        <button onclick="renderStudentDashboard()" style="padding:6px 18px; border:1px solid var(--gray-200); border-radius:40px; background:#fff; cursor:pointer; font-weight:600;">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                    </div>
             `;
 
             lessons.forEach((lesson, idx) => {
@@ -2360,32 +2562,55 @@
         // ============================================
         // ADMIN DASHBOARD
         // ============================================
-        let adminCurrentLearningCat = CATEGORIES[0];
-        let adminCurrentExamCat = CATEGORIES[0];
-
         function renderAdminDashboard() {
             updateAdminStats();
-            renderLearningCategories();
-            renderExamCategories();
-            renderLessonList(adminCurrentLearningCat);
-            renderQuestionList(adminCurrentExamCat);
+            renderAdminSubjects('learning', document.getElementById('learningSubjectGrid'), learningData);
+            renderAdminSubjects('exam', document.getElementById('examSubjectGrid'), examData);
             updateTimerDisplay();
         }
 
         function updateAdminStats() {
             let totalLessons = 0;
             let totalQuestions = 0;
-            CATEGORIES.forEach(cat => {
-                totalLessons += (lessonData[cat] || []).length;
-                totalQuestions += (questionData[cat] || []).length;
+            let totalTopics = 0;
+
+            SUBJECTS.forEach(subject => {
+                // Learning
+                const lTopics = learningData[subject] || {};
+                totalTopics += Object.keys(lTopics).length;
+                Object.values(lTopics).forEach(topic => {
+                    totalLessons += (topic.lessons || []).length;
+                });
+
+                // Exam
+                const eTopics = examData[subject] || {};
+                Object.values(eTopics).forEach(topic => {
+                    totalQuestions += (topic.questions || []).length;
+                });
             });
 
-            document.getElementById('statLessons').textContent = totalLessons;
-            document.getElementById('statQuestions').textContent = totalQuestions;
-            document.getElementById('statStudents').textContent = examResults.length;
-
-            const totalExams = examResults.reduce((a, b) => a + (b.total || 0), 0);
-            document.getElementById('statExams').textContent = totalExams || examResults.length;
+            document.getElementById('adminStats').innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-header"><div class="stat-icon blue"><i class="fas fa-book"></i></div></div>
+                    <div class="stat-number">${totalLessons}</div>
+                    <div class="stat-label">Lessons</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header"><div class="stat-icon green"><i class="fas fa-pencil-alt"></i></div></div>
+                    <div class="stat-number">${totalQuestions}</div>
+                    <div class="stat-label">Questions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header"><div class="stat-icon orange"><i class="fas fa-users"></i></div></div>
+                    <div class="stat-number">${examResults.length}</div>
+                    <div class="stat-label">Students</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header"><div class="stat-icon purple"><i class="fas fa-folder"></i></div></div>
+                    <div class="stat-number">${totalTopics}</div>
+                    <div class="stat-label">Topics</div>
+                </div>
+            `;
 
             // Recent activity
             const activity = document.getElementById('recentActivity');
@@ -2395,7 +2620,7 @@
                 const recent = [...examResults].reverse().slice(0, 5);
                 activity.innerHTML = recent.map(r => `
                     <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--gray-100); font-size:0.85rem;">
-                        <span><strong>${r.name}</strong> - ${r.category}</span>
+                        <span><strong>${r.name}</strong> - ${r.topic}</span>
                         <span style="color:${r.passed ? 'var(--success)' : 'var(--danger)'}; font-weight:600;">
                             ${r.score}% ${r.passed ? '✅' : '❌'}
                         </span>
@@ -2403,6 +2628,58 @@
                     </div>
                 `).join('');
             }
+        }
+
+        function renderAdminSubjects(type, container, data) {
+            let html = '';
+            SUBJECTS.forEach(subject => {
+                const topics = data[subject] || {};
+                const topicKeys = Object.keys(topics);
+
+                html += `
+                    <div class="admin-subject-card">
+                        <div class="subject-title">
+                            <span>${subject}</span>
+                            <span style="font-size:0.75rem; color:var(--gray-500);">${topicKeys.length} topics</span>
+                        </div>
+                        <div class="topic-list">
+                `;
+
+                if (topicKeys.length === 0) {
+                    html += `
+                        <p style="color:var(--gray-400); font-size:0.85rem; padding:8px 0; text-align:center;">
+                            No topics yet. Click "Add Topic" to create one.
+                        </p>
+                    `;
+                } else {
+                    topicKeys.forEach(topic => {
+                        const items = type === 'learning' ? topics[topic].lessons || [] : topics[topic]
+                        .questions || [];
+                        const count = items.length;
+                        const icon = topics[topic].icon || 'fa-book';
+                        html += `
+                            <div class="topic-item-admin">
+                                <span class="topic-name"><i class="fas ${icon}"></i> ${topic} (${count})</span>
+                                <div class="topic-actions">
+                                    <button class="edit-btn" onclick="openEditTopicModal('${type}', '${subject}', '${topic}')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="delete-btn" onclick="deleteTopic('${type}', '${subject}', '${topic}')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
         }
 
         function navigateAdmin(section) {
@@ -2414,8 +2691,8 @@
 
             const titles = {
                 dashboard: ['Dashboard', 'Overview of your portal'],
-                learning: ['Learning Portal', 'Manage lesson notes'],
-                exams: ['Exam Categories', 'Manage exam questions'],
+                learning: ['Learning Portal', 'Manage subjects, topics, and lessons'],
+                exams: ['Exam Categories', 'Manage subjects, topics, and questions'],
                 settings: ['Settings', 'Configure your portal']
             };
             const [title, subtitle] = titles[section] || ['Dashboard', ''];
@@ -2424,12 +2701,10 @@
 
             if (section === 'dashboard') updateAdminStats();
             if (section === 'learning') {
-                renderLearningCategories();
-                renderLessonList(adminCurrentLearningCat);
+                renderAdminSubjects('learning', document.getElementById('learningSubjectGrid'), learningData);
             }
             if (section === 'exams') {
-                renderExamCategories();
-                renderQuestionList(adminCurrentExamCat);
+                renderAdminSubjects('exam', document.getElementById('examSubjectGrid'), examData);
             }
             if (section === 'settings') updateTimerDisplay();
 
@@ -2437,87 +2712,151 @@
         }
 
         // ============================================
-        // ADMIN - LEARNING PORTAL
+        // ADMIN - TOPIC MANAGEMENT
         // ============================================
-        function renderLearningCategories() {
-            const container = document.getElementById('learningCategories');
-            container.innerHTML = CATEGORIES.map(cat => {
-                const count = (lessonData[cat] || []).length;
-                const active = cat === adminCurrentLearningCat ? 'active' : '';
-                return `<span class="category-tab ${active}" onclick="switchLearningCategory('${cat}')">
-                    ${cat} <span class="count">${count}</span>
-                </span>`;
-            }).join('');
+        function openAddTopicModal(type) {
+            const select = document.getElementById('topicSubject');
+            select.innerHTML = SUBJECTS.map(s => `<option value="${s}">${s}</option>`).join('');
+            document.getElementById('topicSection').value = type;
+            document.getElementById('topicName').value = '';
+            document.getElementById('topicIcon').value = 'fa-book';
+            openModal('addTopicModal');
         }
 
-        function switchLearningCategory(category) {
-            adminCurrentLearningCat = category;
-            renderLearningCategories();
-            renderLessonList(category);
-        }
+        function saveTopic() {
+            const section = document.getElementById('topicSection').value;
+            const subject = document.getElementById('topicSubject').value;
+            const name = document.getElementById('topicName').value.trim();
+            const icon = document.getElementById('topicIcon').value.trim() || 'fa-book';
 
-        function renderLessonList(category) {
-            const container = document.getElementById('lessonList');
-            const lessons = lessonData[category] || [];
+            if (!name) { showToast('Please enter a topic name.', 'error'); return; }
 
-            if (lessons.length === 0) {
-                container.innerHTML = '<p style="color:var(--gray-500); text-align:center; padding:20px;">No lessons in this category.</p>';
+            const data = section === 'learning' ? learningData : examData;
+            if (!data[subject]) data[subject] = {};
+            if (data[subject][name]) {
+                showToast('Topic already exists!', 'error');
                 return;
             }
 
-            container.innerHTML = lessons.map((lesson, idx) => `
-                <div class="item-entry">
-                    <div class="item-content">
-                        <div class="item-title">${lesson.title || `Lesson ${idx + 1}`}</div>
-                        <div class="item-meta">${lesson.content ? lesson.content.substring(0, 100) + '...' : 'No content'}</div>
-                    </div>
-                    <div class="item-actions">
-                        <button class="edit-btn" onclick="openEditLessonModal('${category}', ${idx})"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="delete-btn" onclick="deleteLesson('${category}', ${idx})"><i class="fas fa-trash"></i> Delete</button>
-                    </div>
-                </div>
-            `).join('');
-            updateAdminStats();
+            data[subject][name] = { icon: icon, lessons: [], questions: [] };
+            saveData();
+
+            closeModal('addTopicModal');
+            renderAdminDashboard();
+            showToast(`Topic "${name}" added successfully!`, 'success');
         }
 
+        function openEditTopicModal(type, subject, topic) {
+            const data = type === 'learning' ? learningData : examData;
+            const topicData = data[subject]?.[topic];
+            if (!topicData) return;
+
+            document.getElementById('editTopicName').value = topic;
+            document.getElementById('editTopicIcon').value = topicData.icon || 'fa-book';
+            document.getElementById('editTopicSection').value = type;
+            document.getElementById('editTopicSubject').value = subject;
+            document.getElementById('editTopicIndex').value = topic;
+            openModal('editTopicModal');
+        }
+
+        function saveEditTopic() {
+            const type = document.getElementById('editTopicSection').value;
+            const subject = document.getElementById('editTopicSubject').value;
+            const oldName = document.getElementById('editTopicIndex').value;
+            const newName = document.getElementById('editTopicName').value.trim();
+            const icon = document.getElementById('editTopicIcon').value.trim() || 'fa-book';
+
+            if (!newName) { showToast('Please enter a topic name.', 'error'); return; }
+
+            const data = type === 'learning' ? learningData : examData;
+            if (!data[subject]) data[subject] = {};
+
+            if (oldName !== newName && data[subject][newName]) {
+                showToast('Topic already exists!', 'error');
+                return;
+            }
+
+            const topicData = data[subject][oldName];
+            if (!topicData) return;
+
+            data[subject][newName] = { ...topicData, icon: icon };
+            if (oldName !== newName) delete data[subject][oldName];
+            saveData();
+
+            closeModal('editTopicModal');
+            renderAdminDashboard();
+            showToast(`Topic updated successfully!`, 'success');
+        }
+
+        function deleteTopic(type, subject, topic) {
+            if (!confirm(`Delete topic "${topic}" and all its content?`)) return;
+
+            const data = type === 'learning' ? learningData : examData;
+            if (data[subject]) {
+                delete data[subject][topic];
+                saveData();
+                renderAdminDashboard();
+                showToast(`Topic "${topic}" deleted.`, 'warning');
+            }
+        }
+
+        // ============================================
+        // ADMIN - LESSON MANAGEMENT
+        // ============================================
         function openAddLessonModal() {
-            const select = document.getElementById('lessonCategory');
-            select.innerHTML = CATEGORIES.map(cat =>
-                `<option value="${cat}" ${cat === adminCurrentLearningCat ? 'selected' : ''}>${cat}</option>`
-            ).join('');
+            populateSubjectTopicSelects('lessonSubject', 'lessonTopic', learningData);
             document.getElementById('lessonTitle').value = '';
             document.getElementById('lessonContent').value = '';
             openModal('addLessonModal');
         }
 
+        function populateSubjectTopicSelects(subjectId, topicId, data) {
+            const subjectSelect = document.getElementById(subjectId);
+            const topicSelect = document.getElementById(topicId);
+
+            subjectSelect.innerHTML = SUBJECTS.map(s => `<option value="${s}">${s}</option>`).join('');
+            subjectSelect.onchange = function() {
+                const subject = this.value;
+                const topics = data[subject] || {};
+                const topicKeys = Object.keys(topics);
+                topicSelect.innerHTML = topicKeys.map(t => `<option value="${t}">${t}</option>`).join('');
+                if (topicKeys.length === 0) {
+                    topicSelect.innerHTML = '<option value="">No topics available</option>';
+                }
+            };
+            subjectSelect.onchange();
+        }
+
         function saveLesson() {
-            const category = document.getElementById('lessonCategory').value;
+            const subject = document.getElementById('lessonSubject').value;
+            const topic = document.getElementById('lessonTopic').value;
             const title = document.getElementById('lessonTitle').value.trim();
             const content = document.getElementById('lessonContent').value.trim();
 
             if (!title) { showToast('Please enter a lesson title.', 'error'); return; }
             if (!content) { showToast('Please enter lesson content.', 'error'); return; }
+            if (!topic) { showToast('Please select a topic.', 'error'); return; }
 
-            if (!lessonData[category]) lessonData[category] = [];
-            lessonData[category].push({ title, content });
+            if (!learningData[subject]) learningData[subject] = {};
+            if (!learningData[subject][topic]) learningData[subject][topic] = { icon: 'fa-book', lessons: [], questions: [] };
+            if (!learningData[subject][topic].lessons) learningData[subject][topic].lessons = [];
+
+            learningData[subject][topic].lessons.push({ title, content });
             saveData();
 
             closeModal('addLessonModal');
-            renderLessonList(adminCurrentLearningCat);
-            renderLearningCategories();
-            updateAdminStats();
+            renderAdminDashboard();
             showToast('Lesson added successfully!', 'success');
         }
 
-        function openEditLessonModal(category, index) {
-            const lesson = lessonData[category]?.[index];
+        function openEditLessonModal(subject, topic, index) {
+            const lesson = learningData[subject]?.[topic]?.lessons?.[index];
             if (!lesson) return;
 
-            const select = document.getElementById('editLessonCategory');
-            select.innerHTML = CATEGORIES.map(cat =>
-                `<option value="${cat}" ${cat === category ? 'selected' : ''}>${cat}</option>`
-            ).join('');
-
+            populateSubjectTopicSelects('editLessonSubject', 'editLessonTopic', learningData);
+            document.getElementById('editLessonSubject').value = subject;
+            document.getElementById('editLessonSubject').onchange();
+            document.getElementById('editLessonTopic').value = topic;
             document.getElementById('editLessonTitle').value = lesson.title || '';
             document.getElementById('editLessonContent').value = lesson.content || '';
             document.getElementById('editLessonIndex').value = index;
@@ -2525,7 +2864,8 @@
         }
 
         function saveEditLesson() {
-            const category = document.getElementById('editLessonCategory').value;
+            const subject = document.getElementById('editLessonSubject').value;
+            const topic = document.getElementById('editLessonTopic').value;
             const index = parseInt(document.getElementById('editLessonIndex').value);
             const title = document.getElementById('editLessonTitle').value.trim();
             const content = document.getElementById('editLessonContent').value.trim();
@@ -2533,78 +2873,31 @@
             if (!title) { showToast('Please enter a lesson title.', 'error'); return; }
             if (!content) { showToast('Please enter lesson content.', 'error'); return; }
 
-            if (!lessonData[category]) lessonData[category] = [];
-            lessonData[category][index] = { title, content };
+            if (!learningData[subject]) learningData[subject] = {};
+            if (!learningData[subject][topic]) learningData[subject][topic] = { icon: 'fa-book', lessons: [], questions: [] };
+            if (!learningData[subject][topic].lessons) learningData[subject][topic].lessons = [];
+
+            learningData[subject][topic].lessons[index] = { title, content };
             saveData();
 
             closeModal('editLessonModal');
-            renderLessonList(adminCurrentLearningCat);
+            renderAdminDashboard();
             showToast('Lesson updated successfully!', 'success');
         }
 
-        function deleteLesson(category, index) {
+        function deleteLesson(subject, topic, index) {
             if (!confirm('Delete this lesson?')) return;
-            lessonData[category].splice(index, 1);
+            learningData[subject]?.[topic]?.lessons?.splice(index, 1);
             saveData();
-            renderLessonList(adminCurrentLearningCat);
-            renderLearningCategories();
-            updateAdminStats();
+            renderAdminDashboard();
             showToast('Lesson deleted.', 'warning');
         }
 
         // ============================================
-        // ADMIN - EXAM CATEGORIES
+        // ADMIN - QUESTION MANAGEMENT
         // ============================================
-        function renderExamCategories() {
-            const container = document.getElementById('examCategories');
-            container.innerHTML = CATEGORIES.map(cat => {
-                const count = (questionData[cat] || []).length;
-                const active = cat === adminCurrentExamCat ? 'active' : '';
-                return `<span class="category-tab ${active}" onclick="switchExamCategory('${cat}')">
-                    ${cat} <span class="count">${count}</span>
-                </span>`;
-            }).join('');
-        }
-
-        function switchExamCategory(category) {
-            adminCurrentExamCat = category;
-            renderExamCategories();
-            renderQuestionList(category);
-        }
-
-        function renderQuestionList(category) {
-            const container = document.getElementById('questionList');
-            const qs = questionData[category] || [];
-
-            if (qs.length === 0) {
-                container.innerHTML = '<p style="color:var(--gray-500); text-align:center; padding:20px;">No questions in this category.</p>';
-                return;
-            }
-
-            const letters = ['A', 'B', 'C', 'D'];
-            container.innerHTML = qs.map((q, idx) => `
-                <div class="item-entry">
-                    <div class="item-content">
-                        <div class="item-title">${q.text || `Question ${idx + 1}`}</div>
-                        <div class="item-meta">
-                            ${q.options.map((opt, i) => `${letters[i]}: ${opt}${i === q.correct ? ' ✅' : ''}`).join(' | ')}
-                        </div>
-                    </div>
-                    <div class="item-actions">
-                        <button class="edit-btn" onclick="openEditQuestionModal('${category}', ${idx})"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="delete-btn" onclick="deleteQuestion('${category}', ${idx})"><i class="fas fa-trash"></i> Delete</button>
-                    </div>
-                </div>
-            `).join('');
-            updateAdminStats();
-        }
-
         function openAddQuestionModal() {
-            const select = document.getElementById('questionCategory');
-            select.innerHTML = CATEGORIES.map(cat =>
-                `<option value="${cat}" ${cat === adminCurrentExamCat ? 'selected' : ''}>${cat}</option>`
-            ).join('');
-
+            populateSubjectTopicSelects('questionSubject', 'questionTopic', examData);
             document.getElementById('questionText').value = '';
             document.getElementById('optA').value = '';
             document.getElementById('optB').value = '';
@@ -2615,7 +2908,8 @@
         }
 
         function saveQuestion() {
-            const category = document.getElementById('questionCategory').value;
+            const subject = document.getElementById('questionSubject').value;
+            const topic = document.getElementById('questionTopic').value;
             const text = document.getElementById('questionText').value.trim();
             const optA = document.getElementById('optA').value.trim();
             const optB = document.getElementById('optB').value.trim();
@@ -2628,9 +2922,13 @@
                 showToast('Please fill in all options.', 'error');
                 return;
             }
+            if (!topic) { showToast('Please select a topic.', 'error'); return; }
 
-            if (!questionData[category]) questionData[category] = [];
-            questionData[category].push({
+            if (!examData[subject]) examData[subject] = {};
+            if (!examData[subject][topic]) examData[subject][topic] = { icon: 'fa-pencil-alt', lessons: [], questions: [] };
+            if (!examData[subject][topic].questions) examData[subject][topic].questions = [];
+
+            examData[subject][topic].questions.push({
                 text: text,
                 options: [optA, optB, optC, optD],
                 correct: correct
@@ -2638,28 +2936,26 @@
             saveData();
 
             closeModal('addQuestionModal');
-            renderQuestionList(adminCurrentExamCat);
-            renderExamCategories();
-            updateAdminStats();
+            renderAdminDashboard();
             showToast('Question added successfully!', 'success');
         }
 
-        function openEditQuestionModal(category, index) {
-            const q = questionData[category]?.[index];
+        function openEditQuestionModal(subject, topic, index) {
+            const q = examData[subject]?.[topic]?.questions?.[index];
             if (!q) return;
 
-            const select = document.getElementById('editQuestionCategory');
-            select.innerHTML = CATEGORIES.map(cat =>
-                `<option value="${cat}" ${cat === category ? 'selected' : ''}>${cat}</option>`
-            ).join('');
-
+            populateSubjectTopicSelects('editQuestionSubject', 'editQuestionTopic', examData);
+            document.getElementById('editQuestionSubject').value = subject;
+            document.getElementById('editQuestionSubject').onchange();
+            document.getElementById('editQuestionTopic').value = topic;
             document.getElementById('editQuestionText').value = q.text || '';
             document.getElementById('editOptA').value = q.options[0] || '';
             document.getElementById('editOptB').value = q.options[1] || '';
             document.getElementById('editOptC').value = q.options[2] || '';
             document.getElementById('editOptD').value = q.options[3] || '';
             document.getElementById('editQuestionIndex').value = index;
-            document.getElementById('editQuestionCategoryName').value = category;
+            document.getElementById('editQuestionSubjectName').value = subject;
+            document.getElementById('editQuestionTopicName').value = topic;
 
             const correctSelect = document.getElementById('editCorrectAnswer');
             correctSelect.innerHTML = q.options.map((_, i) =>
@@ -2670,7 +2966,8 @@
         }
 
         function saveEditQuestion() {
-            const category = document.getElementById('editQuestionCategory').value;
+            const subject = document.getElementById('editQuestionSubject').value;
+            const topic = document.getElementById('editQuestionTopic').value;
             const index = parseInt(document.getElementById('editQuestionIndex').value);
             const text = document.getElementById('editQuestionText').value.trim();
             const optA = document.getElementById('editOptA').value.trim();
@@ -2685,8 +2982,11 @@
                 return;
             }
 
-            if (!questionData[category]) questionData[category] = [];
-            questionData[category][index] = {
+            if (!examData[subject]) examData[subject] = {};
+            if (!examData[subject][topic]) examData[subject][topic] = { icon: 'fa-pencil-alt', lessons: [], questions: [] };
+            if (!examData[subject][topic].questions) examData[subject][topic].questions = [];
+
+            examData[subject][topic].questions[index] = {
                 text: text,
                 options: [optA, optB, optC, optD],
                 correct: correct
@@ -2694,17 +2994,15 @@
             saveData();
 
             closeModal('editQuestionModal');
-            renderQuestionList(adminCurrentExamCat);
+            renderAdminDashboard();
             showToast('Question updated successfully!', 'success');
         }
 
-        function deleteQuestion(category, index) {
+        function deleteQuestion(subject, topic, index) {
             if (!confirm('Delete this question?')) return;
-            questionData[category].splice(index, 1);
+            examData[subject]?.[topic]?.questions?.splice(index, 1);
             saveData();
-            renderQuestionList(adminCurrentExamCat);
-            renderExamCategories();
-            updateAdminStats();
+            renderAdminDashboard();
             showToast('Question deleted.', 'warning');
         }
 
@@ -2736,8 +3034,8 @@
         // ============================================
         function exportData() {
             const data = {
-                lessons: lessonData,
-                questions: questionData,
+                learning: learningData,
+                exam: examData,
                 results: examResults,
                 timer: examTimer,
                 exportedAt: new Date().toISOString()
@@ -2746,7 +3044,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `great_nurses_backup_${new Date().toISOString().slice(0,10)}.json`;
+            a.download = `great_nurses_backup_${new Date().toISOString().slice(0, 10)}.json`;
             a.click();
             URL.revokeObjectURL(url);
             showToast('Data exported successfully!', 'success');
@@ -2760,10 +3058,10 @@
             reader.onload = function(e) {
                 try {
                     const data = JSON.parse(e.target.result);
-                    if (data.lessons) { lessonData = data.lessons;
-                        localStorage.setItem('greatNursesLessons', JSON.stringify(lessonData)); }
-                    if (data.questions) { questionData = data.questions;
-                        localStorage.setItem('greatNursesQuestions2', JSON.stringify(questionData)); }
+                    if (data.learning) { learningData = data.learning;
+                        localStorage.setItem('greatNursesLearning', JSON.stringify(learningData)); }
+                    if (data.exam) { examData = data.exam;
+                        localStorage.setItem('greatNursesExamData', JSON.stringify(examData)); }
                     if (data.results) { examResults = data.results;
                         localStorage.setItem('greatNursesExamResults', JSON.stringify(examResults)); }
                     if (data.timer) { examTimer = data.timer;
@@ -2782,31 +3080,35 @@
             if (!confirm('⚠️ This will delete ALL data. Are you sure?')) return;
             if (!confirm('⚠️ FINAL WARNING: This cannot be undone!')) return;
 
-            localStorage.removeItem('greatNursesLessons');
-            localStorage.removeItem('greatNursesQuestions2');
+            localStorage.removeItem('greatNursesLearning');
+            localStorage.removeItem('greatNursesExamData');
             localStorage.removeItem('greatNursesExamResults');
             localStorage.removeItem('greatNursesTimer');
+            localStorage.removeItem('greatNursesSession');
+            localStorage.removeItem('greatNursesCurrentStudent');
 
-            lessonData = {};
-            questionData = {};
+            learningData = {};
+            examData = {};
             examResults = [];
             examTimer = { minutes: 20, seconds: 0 };
+            currentStudent = '';
+            sessionId = '';
 
-            CATEGORIES.forEach(cat => {
-                lessonData[cat] = [];
-                questionData[cat] = [];
+            SUBJECTS.forEach(subject => {
+                learningData[subject] = {};
+                examData[subject] = {};
             });
 
             saveData();
-            renderAdminDashboard();
-            showToast('All data reset.', 'warning');
+            location.reload();
         }
 
         // ============================================
         // EXAM SYSTEM
         // ============================================
         let examState = {
-            category: '',
+            subject: '',
+            topic: '',
             questions: [],
             currentIndex: 0,
             answers: {},
@@ -2820,18 +3122,34 @@
 
         let tabSwitchCount = 0;
         let warningCount = 0;
+        let examAutoSubmitted = false;
 
-        function startExam(category) {
-            const qs = questionData[category] || [];
+        function startExam(subject, topic) {
+            const qs = examData[subject]?.[topic]?.questions || [];
             if (qs.length === 0) {
-                showToast('No questions available in this category.', 'error');
+                showToast('No questions available in this topic.', 'error');
                 return;
+            }
+
+            // Check for existing exam session
+            const savedExam = localStorage.getItem('greatNursesExamSession');
+            if (savedExam) {
+                try {
+                    const exam = JSON.parse(savedExam);
+                    if (exam.studentName === currentStudent && exam.topic === topic && !exam.submitted) {
+                        if (confirm('🔄 You have an unfinished exam. Would you like to resume it?')) {
+                            resumeExam(exam);
+                            return;
+                        }
+                    }
+                } catch (e) {}
             }
 
             // Shuffle questions
             const shuffled = shuffleArray([...qs]);
 
-            examState.category = category;
+            examState.subject = subject;
+            examState.topic = topic;
             examState.questions = shuffled;
             examState.currentIndex = 0;
             examState.answers = {};
@@ -2840,9 +3158,13 @@
             examState.studentName = currentStudent;
             examState.seconds = examTimer.minutes * 60 + examTimer.seconds;
             examState.started = true;
+            examAutoSubmitted = false;
 
             tabSwitchCount = 0;
             warningCount = 0;
+
+            // Save exam session
+            saveExamSession();
 
             // Show exam
             document.getElementById('studentWrapper').classList.remove('show');
@@ -2854,7 +3176,7 @@
 
             // Set header info
             document.getElementById('examStudentName').textContent = currentStudent;
-            document.getElementById('examCategoryName').textContent = category;
+            document.getElementById('examTopicName').textContent = `${subject} - ${topic}`;
 
             // Render
             renderExamQuestion();
@@ -2863,6 +3185,52 @@
             startExamTimer();
 
             showToast('📝 Exam started! Good luck!', 'success');
+        }
+
+        function saveExamSession() {
+            const session = {
+                subject: examState.subject,
+                topic: examState.topic,
+                questions: examState.questions,
+                currentIndex: examState.currentIndex,
+                answers: examState.answers,
+                flagged: examState.flagged,
+                seconds: examState.seconds,
+                studentName: examState.studentName,
+                submitted: examState.submitted,
+                started: examState.started
+            };
+            localStorage.setItem('greatNursesExamSession', JSON.stringify(session));
+        }
+
+        function resumeExam(exam) {
+            examState.subject = exam.subject;
+            examState.topic = exam.topic;
+            examState.questions = exam.questions;
+            examState.currentIndex = exam.currentIndex || 0;
+            examState.answers = exam.answers || {};
+            examState.flagged = exam.flagged || {};
+            examState.seconds = exam.seconds || (examTimer.minutes * 60 + examTimer.seconds);
+            examState.studentName = exam.studentName;
+            examState.submitted = exam.submitted || false;
+            examState.started = true;
+            examAutoSubmitted = false;
+
+            document.getElementById('studentWrapper').classList.remove('show');
+            document.getElementById('examWrapper').classList.add('show');
+
+            document.getElementById('watermarkText').textContent = currentStudent;
+            document.getElementById('watermarkOverlay').classList.add('active');
+
+            document.getElementById('examStudentName').textContent = currentStudent;
+            document.getElementById('examTopicName').textContent = `${exam.subject} - ${exam.topic}`;
+
+            renderExamQuestion();
+            renderQuestionGrid();
+            updateExamStats();
+            startExamTimer();
+
+            showToast('🔄 Exam resumed successfully!', 'success');
         }
 
         function shuffleArray(arr) {
@@ -2916,6 +3284,7 @@
 
             renderQuestionGrid();
             updateExamStats();
+            saveExamSession();
         }
 
         function renderQuestionGrid() {
@@ -2954,6 +3323,7 @@
             const i = examState.currentIndex;
             examState.flagged[i] = !examState.flagged[i];
             renderExamQuestion();
+            saveExamSession();
         }
 
         function examPrev() {
@@ -2982,10 +3352,11 @@
             examState.answers[examState.currentIndex] = idx;
             renderQuestionGrid();
             updateExamStats();
+            saveExamSession();
         });
 
         // ============================================
-        // EXAM TIMER
+        // EXAM TIMER WITH AUTO-SUBMIT
         // ============================================
         function startExamTimer() {
             if (examState.timerInterval) clearInterval(examState.timerInterval);
@@ -2994,6 +3365,7 @@
                     clearInterval(examState.timerInterval);
                     document.getElementById('examTimer').textContent = '00:00';
                     if (!examState.submitted) {
+                        examAutoSubmitted = true;
                         showToast('⏰ Time is up! Auto-submitting...', 'warning');
                         submitExam();
                     }
@@ -3003,8 +3375,9 @@
                 const m = String(Math.floor(examState.seconds / 60)).padStart(2, '0');
                 const s = String(examState.seconds % 60).padStart(2, '0');
                 document.getElementById('examTimer').textContent = m + ':' + s;
+                saveExamSession();
 
-                // Warning at 5 min and 1 min
+                // Warnings
                 if (examState.seconds === 300) showToast('⏰ 5 minutes remaining!', 'warning');
                 if (examState.seconds === 60) showToast('⏰ 1 minute remaining!', 'warning');
             }, 1000);
@@ -3015,7 +3388,11 @@
         // ============================================
         function submitExam() {
             if (examState.submitted) return;
-            if (!confirm('Submit your exam? This cannot be undone.')) return;
+
+            // If not auto-submitted, ask for confirmation
+            if (!examAutoSubmitted) {
+                if (!confirm('Submit your exam? This cannot be undone.')) return;
+            }
 
             examState.submitted = true;
             if (examState.timerInterval) clearInterval(examState.timerInterval);
@@ -3039,27 +3416,52 @@
             // Save result
             examResults.push({
                 name: examState.studentName,
-                category: examState.category,
+                subject: examState.subject,
+                topic: examState.topic,
                 score: score,
                 correct: correct,
                 wrong: wrong,
                 skipped: skipped,
                 total: total,
                 passed: passed,
+                autoSubmitted: examAutoSubmitted,
                 date: new Date().toLocaleString()
             });
             localStorage.setItem('greatNursesExamResults', JSON.stringify(examResults));
 
-            // Show results
-            showResults(score, correct, wrong, skipped, total, passed);
+            // Clear exam session
+            localStorage.removeItem('greatNursesExamSession');
+
+            // Show results with motivation
+            showResults(score, correct, wrong, skipped, total, passed, examAutoSubmitted);
         }
 
-        function showResults(score, correct, wrong, skipped, total, passed) {
+        function showResults(score, correct, wrong, skipped, total, passed, autoSubmitted) {
             const overlay = document.getElementById('scoreOverlay');
             const icon = document.getElementById('scoreIcon');
             const number = document.getElementById('scoreNumber');
             const details = document.getElementById('scoreDetails');
             const status = document.getElementById('scoreStatus');
+            const motivation = document.getElementById('motivationMessage');
+
+            // Motivational messages
+            const messages = [
+                { min: 90, msg: "🌟 Outstanding! You're a nursing star! Keep shining bright!" },
+                { min: 75, msg: "👏 Excellent work! You're well on your way to becoming a great nurse!" },
+                { min: 60, msg: "💪 Good job! Keep reviewing and you'll improve even more!" },
+                { min: 50, msg: "📚 Nice effort! Review the topics you found challenging." },
+                { min: 40, msg: "🌱 Every journey begins with a step. Keep learning and growing!" },
+                { min: 30, msg: "💪 Don't give up! Every attempt makes you stronger." },
+                { min: 20, msg: "📖 Learning is a process. Review your notes and try again!" },
+                { min: 0, msg: "🌟 Remember: Every great nurse started where you are now. Keep going!" }
+            ];
+
+            let msg = messages.find(m => score >= m.min) || messages[messages.length - 1];
+            if (autoSubmitted) {
+                msg.msg += " ⏰ (Auto-submitted when time ran out)";
+            }
+
+            motivation.textContent = msg.msg;
 
             if (passed) {
                 icon.innerHTML = '<i class="fas fa-check-circle"></i>';
@@ -3075,9 +3477,10 @@
 
             number.textContent = `${score}%`;
             details.innerHTML = `
-                <strong>${examState.category}</strong><br />
+                <strong>${examState.subject} - ${examState.topic}</strong><br />
                 Correct: ${correct} | Wrong: ${wrong} | Skipped: ${skipped}<br />
                 Total: ${total} questions
+                ${autoSubmitted ? '<br />⏰ Auto-submitted' : ''}
             `;
             overlay.classList.add('show');
         }
@@ -3094,6 +3497,7 @@
             renderStudentDashboard();
             if (examState.timerInterval) clearInterval(examState.timerInterval);
             examState.started = false;
+            localStorage.removeItem('greatNursesExamSession');
             showToast('Exam completed!', 'info');
         }
 
@@ -3102,7 +3506,8 @@
         // ============================================
         function studentLogout() {
             if (examState.started && !examState.submitted) {
-                if (!confirm('You have an ongoing exam. Logging out will lose your progress. Continue?')) return;
+                if (!confirm('You have an ongoing exam. Logging out will save your progress. Continue?')) return;
+                saveExamSession();
             }
             document.getElementById('studentWrapper').classList.remove('show');
             document.getElementById('examWrapper').classList.remove('show');
@@ -3112,6 +3517,8 @@
             document.getElementById('loginPassword').value = '';
             if (examState.timerInterval) clearInterval(examState.timerInterval);
             examState.started = false;
+            localStorage.removeItem('greatNursesCurrentStudent');
+            localStorage.removeItem('greatNursesSession');
             showToast('Logged out.', 'info');
         }
 
@@ -3221,8 +3628,8 @@
                     showTabWarning();
                     setTimeout(() => {
                         if (document.hidden) {
-                            submitExam();
                             showToast('Auto-submitted due to tab switching.', 'error');
+                            submitExam();
                         }
                     }, 5000);
                 } else if (tabSwitchCount >= 2) {
@@ -3239,51 +3646,88 @@
         // ============================================
         // INITIALIZATION
         // ============================================
-        // Ensure all categories have data
-        CATEGORIES.forEach(cat => {
-            if (!lessonData[cat]) lessonData[cat] = [];
-            if (!questionData[cat]) questionData[cat] = [];
+        // Ensure all subjects have data
+        SUBJECTS.forEach(subject => {
+            if (!learningData[subject]) learningData[subject] = {};
+            if (!examData[subject]) examData[subject] = {};
         });
         saveData();
 
-        // Add some sample data if empty
-        if (Object.values(questionData).every(arr => arr.length === 0)) {
-            // Add sample questions for each category
-            const sampleQuestions = {
-                'Medical Nursing': [
-                    { text: "What is the normal range for blood pressure?", options: ["120/80", "140/90", "100/70", "130/85"], correct: 0 },
-                    { text: "Which electrolyte is the major cation in extracellular fluid?", options: ["Sodium", "Potassium", "Calcium", "Magnesium"], correct: 0 }
-                ],
-                'Surgical Nursing': [
-                    { text: "What is the priority intervention for a client with wound dehiscence?", options: ["Cover with sterile saline dressing", "Apply pressure", "Irrigate the wound", "Administer antibiotics"], correct: 0 },
-                    { text: "Which phase of wound healing involves collagen production?", options: ["Hemostasis", "Inflammatory", "Proliferative", "Maturation"], correct: 2 }
-                ],
-                'Obstetrics': [
-                    { text: "What is the normal duration of labour for a primigravida?", options: ["6-8 hours", "12-18 hours", "24-36 hours", "4-6 hours"], correct: 1 },
-                    { text: "Which hormone is responsible for uterine contractions?", options: ["Estrogen", "Progesterone", "Oxytocin", "Prolactin"], correct: 2 }
-                ],
-                'Public Health Nursing': [
-                    { text: "What is the primary prevention strategy for communicable diseases?", options: ["Vaccination", "Screening", "Treatment", "Isolation"], correct: 0 },
-                    { text: "Which level of prevention is health promotion?", options: ["Primary", "Secondary", "Tertiary", "Quaternary"], correct: 0 }
-                ]
+        // Add sample data if empty
+        const hasData = Object.values(learningData).some(s => Object.keys(s).length > 0) ||
+            Object.values(examData).some(s => Object.keys(s).length > 0);
+
+        if (!hasData) {
+            // Sample topics and questions
+            const sampleTopics = {
+                'Medical Nursing': {
+                    'Cardiology': { icon: 'fa-heartbeat' },
+                    'Respiratory': { icon: 'fa-lungs' },
+                    'Neurology': { icon: 'fa-brain' }
+                },
+                'Surgical Nursing': {
+                    'General Surgery': { icon: 'fa-scalpel' },
+                    'Orthopedics': { icon: 'fa-bone' },
+                    'Cardiothoracic': { icon: 'fa-heart' }
+                },
+                'Obstetrics': {
+                    'Antenatal': { icon: 'fa-baby' },
+                    'Labour': { icon: 'fa-female' },
+                    'Postnatal': { icon: 'fa-child' }
+                },
+                'Public Health Nursing': {
+                    'Epidemiology': { icon: 'fa-chart-line' },
+                    'Health Promotion': { icon: 'fa-shield-alt' },
+                    'Community Health': { icon: 'fa-users' }
+                }
             };
 
-            CATEGORIES.forEach(cat => {
-                if (sampleQuestions[cat]) {
-                    questionData[cat] = sampleQuestions[cat];
-                }
+            Object.keys(sampleTopics).forEach(subject => {
+                Object.keys(sampleTopics[subject]).forEach(topic => {
+                    if (!learningData[subject]) learningData[subject] = {};
+                    learningData[subject][topic] = {
+                        icon: sampleTopics[subject][topic].icon,
+                        lessons: [{
+                            title: `Introduction to ${topic}`,
+                            content: `This is a sample lesson for ${topic}.\n\nKey points:\n- Point 1\n- Point 2\n- Point 3`
+                        }],
+                        questions: [{
+                            text: `What is a key concept in ${topic}?`,
+                            options: ['Option A', 'Option B', 'Option C', 'Option D'],
+                            correct: 0
+                        }]
+                    };
+
+                    if (!examData[subject]) examData[subject] = {};
+                    examData[subject][topic] = {
+                        icon: sampleTopics[subject][topic].icon,
+                        lessons: [],
+                        questions: [{
+                            text: `Sample question for ${topic}: What is the most important consideration?`,
+                            options: ['Option A', 'Option B', 'Option C', 'Option D'],
+                            correct: 0
+                        }]
+                    };
+                });
             });
             saveData();
         }
 
         console.log('🏥 Great Nurses Learning & Examination Portal loaded!');
-        console.log(`📊 ${CATEGORIES.length} categories loaded.`);
+        console.log(`📚 ${SUBJECTS.length} subjects, ${Object.values(learningData).reduce((a, b) => a + Object.keys(b).length, 0)} learning topics, ${Object.values(examData).reduce((a, b) => a + Object.keys(b).length, 0)} exam topics`);
 
         // Keyboard shortcut for admin login (Ctrl+Shift+A)
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.shiftKey && e.key === 'A') {
                 document.getElementById('loginPassword').value = ADMIN_PASSWORD;
                 adminLogin();
+            }
+        });
+
+        // Handle page refresh - don't lose session
+        window.addEventListener('beforeunload', function() {
+            if (examState.started && !examState.submitted) {
+                saveExamSession();
             }
         });
     </script>
