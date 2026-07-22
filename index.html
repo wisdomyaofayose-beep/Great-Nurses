@@ -395,7 +395,7 @@
 
         .student-section-title i { color: var(--secondary); }
 
-        /* Subject Cards with Topics */
+        /* Subject Cards */
         .subject-card {
             background: #fff;
             border-radius: var(--radius);
@@ -765,7 +765,6 @@
             padding: 16px 20px;
         }
 
-        /* Subject/Topic Management */
         .admin-subject-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -841,7 +840,6 @@
             color: #991b1b;
         }
 
-        /* Item Lists */
         .item-list {
             max-height: 400px;
             overflow-y: auto;
@@ -1063,7 +1061,6 @@
             margin: 0 auto;
         }
 
-        /* Question Sidebar */
         .exam-sidebar {
             width: 200px;
             flex-shrink: 0;
@@ -1181,7 +1178,6 @@
             border-color: var(--gray-300);
         }
 
-        /* Question Content */
         .exam-content {
             flex: 1;
             background: #fff;
@@ -2312,7 +2308,6 @@
         // ============================================
         const SUBJECTS = ['Medical Nursing', 'Surgical Nursing', 'Obstetrics', 'Public Health Nursing'];
 
-        // Data structure: { subject: { topic: { lessons: [], questions: [] } } }
         let learningData = JSON.parse(localStorage.getItem('greatNursesLearning')) || {};
         let examData = JSON.parse(localStorage.getItem('greatNursesExamData')) || {};
         let examResults = JSON.parse(localStorage.getItem('greatNursesExamResults')) || [];
@@ -2320,13 +2315,11 @@
         let currentStudent = '';
         let sessionId = '';
 
-        // Initialize data structure
         SUBJECTS.forEach(subject => {
             if (!learningData[subject]) learningData[subject] = {};
             if (!examData[subject]) examData[subject] = {};
         });
 
-        // Generate session ID
         function generateSessionId() {
             return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
         }
@@ -2367,7 +2360,6 @@
         const STUDENT_PASSWORD = "easymoves";
         const ADMIN_PASSWORD = "eduame";
 
-        // Check for existing session on page load
         window.addEventListener('load', function() {
             const savedSession = localStorage.getItem('greatNursesSession');
             const savedStudent = localStorage.getItem('greatNursesCurrentStudent');
@@ -2433,7 +2425,6 @@
             document.getElementById('loginPassword').value = '';
         }
 
-        // Enter key support
         document.getElementById('loginPassword').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') document.getElementById('loginForm').dispatchEvent(new Event('submit'));
         });
@@ -2524,7 +2515,7 @@
         }
 
         // ============================================
-        // VIEW LESSONS (Student)
+        // VIEW LESSONS (Student) - FIXED BACK BUTTON
         // ============================================
         function viewLessons(subject, topic) {
             const lessons = learningData[subject]?.[topic]?.lessons || [];
@@ -2533,15 +2524,18 @@
                 return;
             }
 
+            // Store current view state so we can return properly
+            const content = document.querySelector('.student-content');
+
             let html = `
                 <div style="margin:20px 0;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
                         <h3 style="color:var(--gray-900);">
                             <i class="fas fa-book"></i> ${subject} - ${topic}
                             <span style="font-weight:400; font-size:0.85rem; color:var(--gray-500);">(${lessons.length} lessons)</span>
                         </h3>
-                        <button onclick="renderStudentDashboard()" style="padding:6px 18px; border:1px solid var(--gray-200); border-radius:40px; background:#fff; cursor:pointer; font-weight:600;">
-                            <i class="fas fa-arrow-left"></i> Back
+                        <button onclick="renderStudentDashboard()" style="padding:8px 20px; border:1px solid var(--gray-200); border-radius:40px; background:#fff; cursor:pointer; font-weight:600; transition:var(--transition);">
+                            <i class="fas fa-arrow-left"></i> Back to Dashboard
                         </button>
                     </div>
             `;
@@ -2556,7 +2550,7 @@
             });
 
             html += '</div>';
-            document.querySelector('.student-content').innerHTML = html;
+            content.innerHTML = html;
         }
 
         // ============================================
@@ -2575,14 +2569,12 @@
             let totalTopics = 0;
 
             SUBJECTS.forEach(subject => {
-                // Learning
                 const lTopics = learningData[subject] || {};
                 totalTopics += Object.keys(lTopics).length;
                 Object.values(lTopics).forEach(topic => {
                     totalLessons += (topic.lessons || []).length;
                 });
 
-                // Exam
                 const eTopics = examData[subject] || {};
                 Object.values(eTopics).forEach(topic => {
                     totalQuestions += (topic.questions || []).length;
@@ -2612,7 +2604,6 @@
                 </div>
             `;
 
-            // Recent activity
             const activity = document.getElementById('recentActivity');
             if (examResults.length === 0) {
                 activity.innerHTML = '<p style="color:var(--gray-500);">No recent activity.</p>';
@@ -3131,7 +3122,6 @@
                 return;
             }
 
-            // Check for existing exam session
             const savedExam = localStorage.getItem('greatNursesExamSession');
             if (savedExam) {
                 try {
@@ -3145,7 +3135,6 @@
                 } catch (e) {}
             }
 
-            // Shuffle questions
             const shuffled = shuffleArray([...qs]);
 
             examState.subject = subject;
@@ -3163,22 +3152,17 @@
             tabSwitchCount = 0;
             warningCount = 0;
 
-            // Save exam session
             saveExamSession();
 
-            // Show exam
             document.getElementById('studentWrapper').classList.remove('show');
             document.getElementById('examWrapper').classList.add('show');
 
-            // Set watermark
             document.getElementById('watermarkText').textContent = currentStudent;
             document.getElementById('watermarkOverlay').classList.add('active');
 
-            // Set header info
             document.getElementById('examStudentName').textContent = currentStudent;
             document.getElementById('examTopicName').textContent = `${subject} - ${topic}`;
 
-            // Render
             renderExamQuestion();
             renderQuestionGrid();
             updateExamStats();
@@ -3268,17 +3252,14 @@
             document.getElementById('qNumDisplay').textContent = examState.currentIndex + 1;
             document.getElementById('qTotalDisplay').textContent = qs.length;
 
-            // Update flag button
             const flagBtn = document.getElementById('examFlagBtn');
             const isFlagged = examState.flagged[examState.currentIndex] || false;
             flagBtn.classList.toggle('flagged', isFlagged);
             flagBtn.innerHTML = `<i class="fas fa-flag"></i> ${isFlagged ? 'Flagged' : 'Flag'}`;
 
-            // Update badge
             const badge = document.getElementById('examFlagBadge');
             badge.classList.toggle('active', Object.values(examState.flagged).some(v => v));
 
-            // Update nav buttons
             document.getElementById('examPrevBtn').disabled = examState.currentIndex === 0;
             document.getElementById('examNextBtn').disabled = examState.currentIndex === qs.length - 1;
 
@@ -3340,7 +3321,6 @@
             }
         }
 
-        // Option click
         document.getElementById('examOptionsContainer').addEventListener('click', function(e) {
             const item = e.target.closest('.option-item');
             if (!item || examState.submitted) return;
@@ -3356,7 +3336,7 @@
         });
 
         // ============================================
-        // EXAM TIMER WITH AUTO-SUBMIT
+        // EXAM TIMER
         // ============================================
         function startExamTimer() {
             if (examState.timerInterval) clearInterval(examState.timerInterval);
@@ -3377,7 +3357,6 @@
                 document.getElementById('examTimer').textContent = m + ':' + s;
                 saveExamSession();
 
-                // Warnings
                 if (examState.seconds === 300) showToast('⏰ 5 minutes remaining!', 'warning');
                 if (examState.seconds === 60) showToast('⏰ 1 minute remaining!', 'warning');
             }, 1000);
@@ -3389,7 +3368,6 @@
         function submitExam() {
             if (examState.submitted) return;
 
-            // If not auto-submitted, ask for confirmation
             if (!examAutoSubmitted) {
                 if (!confirm('Submit your exam? This cannot be undone.')) return;
             }
@@ -3413,7 +3391,6 @@
             const score = total ? Math.round((correct / total) * 100) : 0;
             const passed = score >= 60;
 
-            // Save result
             examResults.push({
                 name: examState.studentName,
                 subject: examState.subject,
@@ -3429,10 +3406,8 @@
             });
             localStorage.setItem('greatNursesExamResults', JSON.stringify(examResults));
 
-            // Clear exam session
             localStorage.removeItem('greatNursesExamSession');
 
-            // Show results with motivation
             showResults(score, correct, wrong, skipped, total, passed, examAutoSubmitted);
         }
 
@@ -3444,7 +3419,6 @@
             const status = document.getElementById('scoreStatus');
             const motivation = document.getElementById('motivationMessage');
 
-            // Motivational messages
             const messages = [
                 { min: 90, msg: "🌟 Outstanding! You're a nursing star! Keep shining bright!" },
                 { min: 75, msg: "👏 Excellent work! You're well on your way to becoming a great nurse!" },
@@ -3561,7 +3535,6 @@
             document.getElementById('tabWarningOverlay').classList.remove('show');
         }
 
-        // Right-click protection
         document.addEventListener('contextmenu', function(e) {
             if (document.getElementById('examWrapper').classList.contains('show')) {
                 e.preventDefault();
@@ -3575,7 +3548,6 @@
             }
         });
 
-        // Keyboard shortcuts
         document.addEventListener('keydown', function(e) {
             if (!document.getElementById('examWrapper').classList.contains('show')) return;
 
@@ -3594,7 +3566,6 @@
                 return false;
             }
 
-            // Arrow keys for navigation
             if (e.key === 'ArrowLeft') { e.preventDefault();
                 examPrev(); }
             if (e.key === 'ArrowRight') { e.preventDefault();
@@ -3603,7 +3574,6 @@
                 toggleFlag(); }
         });
 
-        // Screenshot protection
         document.addEventListener('keydown', function(e) {
             if (e.key === 'PrintScreen' || (e.ctrlKey && e.key === 'PrintScreen')) {
                 if (document.getElementById('examWrapper').classList.contains('show')) {
@@ -3617,7 +3587,6 @@
             }
         });
 
-        // Tab switch detection
         document.addEventListener('visibilitychange', function() {
             if (!document.getElementById('examWrapper').classList.contains('show')) return;
             if (examState.submitted) return;
@@ -3646,19 +3615,16 @@
         // ============================================
         // INITIALIZATION
         // ============================================
-        // Ensure all subjects have data
         SUBJECTS.forEach(subject => {
             if (!learningData[subject]) learningData[subject] = {};
             if (!examData[subject]) examData[subject] = {};
         });
         saveData();
 
-        // Add sample data if empty
         const hasData = Object.values(learningData).some(s => Object.keys(s).length > 0) ||
             Object.values(examData).some(s => Object.keys(s).length > 0);
 
         if (!hasData) {
-            // Sample topics and questions
             const sampleTopics = {
                 'Medical Nursing': {
                     'Cardiology': { icon: 'fa-heartbeat' },
@@ -3714,9 +3680,8 @@
         }
 
         console.log('🏥 Great Nurses Learning & Examination Portal loaded!');
-        console.log(`📚 ${SUBJECTS.length} subjects, ${Object.values(learningData).reduce((a, b) => a + Object.keys(b).length, 0)} learning topics, ${Object.values(examData).reduce((a, b) => a + Object.keys(b).length, 0)} exam topics`);
+        console.log(`📚 ${SUBJECTS.length} subjects loaded.`);
 
-        // Keyboard shortcut for admin login (Ctrl+Shift+A)
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.shiftKey && e.key === 'A') {
                 document.getElementById('loginPassword').value = ADMIN_PASSWORD;
@@ -3724,7 +3689,6 @@
             }
         });
 
-        // Handle page refresh - don't lose session
         window.addEventListener('beforeunload', function() {
             if (examState.started && !examState.submitted) {
                 saveExamSession();
