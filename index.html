@@ -46,6 +46,62 @@
         }
 
         /* ============================================
+           TOP CORNER LOGO - FIXED POSITION
+        ============================================ */
+        .top-logo {
+            position: fixed;
+            top: 12px;
+            left: 16px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 6px 16px 6px 10px;
+            border-radius: 40px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .top-logo:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transform: scale(1.02);
+        }
+
+        .top-logo .logo-img {
+            height: 36px;
+            width: auto;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .top-logo .logo-text {
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .top-logo .logo-text span {
+            color: var(--secondary);
+        }
+
+        .top-logo .logo-badge {
+            font-size: 0.5rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            background: var(--gray-100);
+            padding: 1px 8px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============================================
            WATERMARK
         ============================================ */
         .watermark-overlay {
@@ -101,7 +157,7 @@
         ============================================ */
         .toast-container {
             position: fixed;
-            top: 20px;
+            top: 80px;
             right: 20px;
             z-index: 99999;
             display: flex;
@@ -144,7 +200,7 @@
             background: #ffffff;
             border-radius: 40px;
             box-shadow: var(--shadow-lg);
-            padding: 48px 40px 40px;
+            padding: 56px 40px 40px;
             text-align: center;
             margin: 40px auto;
             position: relative;
@@ -152,14 +208,31 @@
         }
 
         .landing-container .logo {
-            font-size: 2.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .landing-container .logo .logo-img-large {
+            height: 70px;
+            width: auto;
+            border-radius: 12px;
+            object-fit: contain;
+            margin-bottom: 4px;
+        }
+
+        .landing-container .logo .logo-text-main {
+            font-size: 2.2rem;
             font-weight: 900;
             color: var(--primary);
             letter-spacing: -1px;
             line-height: 1.1;
         }
 
-        .landing-container .logo span { color: var(--secondary); }
+        .landing-container .logo .logo-text-main span {
+            color: var(--secondary);
+        }
 
         .landing-container .logo-sub {
             font-size: 0.7rem;
@@ -167,8 +240,8 @@
             letter-spacing: 4px;
             color: var(--gray-500);
             text-transform: uppercase;
-            margin-top: 4px;
             display: block;
+            margin-top: -2px;
         }
 
         .landing-container .logo-divider {
@@ -319,7 +392,7 @@
         .student-header {
             background: var(--primary);
             color: #fff;
-            padding: 16px 28px;
+            padding: 16px 28px 16px 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -395,7 +468,6 @@
 
         .student-section-title i { color: var(--secondary); }
 
-        /* Subject Cards */
         .subject-card {
             background: #fff;
             border-radius: var(--radius);
@@ -908,7 +980,6 @@
             background: #fecaca;
         }
 
-        /* Forms */
         .form-group { margin-bottom: 12px; }
 
         .form-group label {
@@ -1000,7 +1071,7 @@
         .exam-header-bar {
             background: #fff;
             border-bottom: 2px solid var(--gray-200);
-            padding: 12px 24px;
+            padding: 12px 24px 12px 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1597,7 +1668,7 @@
             }
 
             .exam-header-bar {
-                padding: 10px 16px;
+                padding: 10px 16px 10px 70px;
             }
 
             .form-row {
@@ -1614,7 +1685,7 @@
             }
 
             .student-header {
-                padding: 12px 16px;
+                padding: 12px 16px 12px 70px;
             }
 
             .stats-grid {
@@ -1651,6 +1722,18 @@
 
             .topic-grid {
                 grid-template-columns: 1fr 1fr;
+            }
+
+            .top-logo .logo-text {
+                font-size: 0.8rem;
+            }
+
+            .top-logo .logo-img {
+                height: 28px;
+            }
+
+            .top-logo .logo-badge {
+                display: none;
             }
         }
 
@@ -1691,6 +1774,28 @@
 
             .student-cards {
                 grid-template-columns: 1fr;
+            }
+
+            .top-logo {
+                top: 8px;
+                left: 10px;
+                padding: 4px 12px 4px 8px;
+            }
+
+            .top-logo .logo-img {
+                height: 24px;
+            }
+
+            .top-logo .logo-text {
+                font-size: 0.7rem;
+            }
+
+            .landing-container .logo .logo-img-large {
+                height: 50px;
+            }
+
+            .landing-container .logo .logo-text-main {
+                font-size: 1.6rem;
             }
         }
 
@@ -1750,6 +1855,15 @@
 <body>
 
     <!-- ============================================
+    TOP CORNER LOGO - FIXED THROUGHOUT SITE
+    ============================================ -->
+    <a href="#" onclick="goHome()" class="top-logo" title="Great Nurses Home">
+        <img src="logo.png" alt="Great Nurses" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="logo-text">Great<span>Nurses</span></span>
+        <span class="logo-badge">RGN 2026</span>
+    </a>
+
+    <!-- ============================================
     WATERMARK OVERLAY
     ============================================ -->
     <div class="watermark-overlay" id="watermarkOverlay">
@@ -1780,9 +1894,14 @@
     ============================================ -->
     <div class="landing-container" id="landingPage">
         <div class="logo">
-            Great<span>Nurses</span>
-            <span class="logo-sub">Learning & Examination Portal</span>
-            <div class="logo-divider"></div>
+            <img src="logo.png" alt="Great Nurses Logo" class="logo-img-large" onerror="this.style.display='none';" />
+            <div>
+                <div class="logo-text-main">
+                    Great<span>Nurses</span>
+                </div>
+                <span class="logo-sub">Learning & Examination Portal</span>
+                <div class="logo-divider"></div>
+            </div>
         </div>
 
         <div class="tagline">
@@ -2300,7 +2419,7 @@
     </div>
 
     <!-- ============================================
-    JAVASCRIPT
+    JAVASCRIPT - Full Implementation
     ============================================ -->
     <script>
         // ============================================
@@ -2330,6 +2449,37 @@
             localStorage.setItem('greatNursesExamResults', JSON.stringify(examResults));
             localStorage.setItem('greatNursesTimer', JSON.stringify(examTimer));
             localStorage.setItem('greatNursesSession', sessionId);
+        }
+
+        // ============================================
+        // GO HOME FUNCTION
+        // ============================================
+        function goHome() {
+            // If in exam, ask to exit
+            if (document.getElementById('examWrapper').classList.contains('show')) {
+                if (examState.started && !examState.submitted) {
+                    if (!confirm('You have an ongoing exam. Going home will save your progress. Continue?')) return;
+                    saveExamSession();
+                }
+                document.getElementById('examWrapper').classList.remove('show');
+                document.getElementById('watermarkOverlay').classList.remove('active');
+                if (examState.timerInterval) clearInterval(examState.timerInterval);
+                examState.started = false;
+            }
+            // If in admin, go back to landing
+            if (document.getElementById('adminWrapper').classList.contains('show')) {
+                document.getElementById('adminWrapper').classList.remove('show');
+                document.getElementById('landingPage').style.display = 'block';
+                return;
+            }
+            // If in student dashboard, refresh it
+            if (document.getElementById('studentWrapper').classList.contains('show')) {
+                renderStudentDashboard();
+                showToast('Back to dashboard', 'info');
+                return;
+            }
+            // If on landing page, scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // ============================================
@@ -2515,7 +2665,7 @@
         }
 
         // ============================================
-        // VIEW LESSONS (Student) - FIXED BACK BUTTON
+        // VIEW LESSONS (Student)
         // ============================================
         function viewLessons(subject, topic) {
             const lessons = learningData[subject]?.[topic]?.lessons || [];
@@ -2524,7 +2674,6 @@
                 return;
             }
 
-            // Store current view state so we can return properly
             const content = document.querySelector('.student-content');
 
             let html = `
